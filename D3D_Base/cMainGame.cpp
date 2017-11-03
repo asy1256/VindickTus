@@ -32,11 +32,9 @@ void cMainGame::SetLight()
 void cMainGame::Setup()
 {
 	SetLight();
-	//g_pSceneManager->addScene("AseScene", new cAseLoaderScene);
-	//g_pSceneManager->addScene("BufferScene", new cBufferScene);
-	g_pSceneManager->addScene("RawScene", new cRawLoaderScene);
-
-	g_pSceneManager->changeScene("RawScene");
+	//g_pSceneManager->addScene("Test1", new cTestScene);
+	//g_pSceneManager->addScene("Test2", new cTestScene2);
+	//g_pSceneManager->changeScene("Test1");
 }
 
 void cMainGame::Update()

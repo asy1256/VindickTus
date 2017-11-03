@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "cActionLinear.h"
-#include "cCubeMan.h"
 
 cActionLinear::cActionLinear()
 	: m_fActionTime(0.0f)

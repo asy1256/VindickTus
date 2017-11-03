@@ -75,7 +75,7 @@ HRESULT cSceneManager::changeScene(std::string sceneName)
 	if (SUCCEEDED(find->second->Setup()))
 	{
 		//기존 씬이 있으면 릴리즈
-		if (_currentScene) _currentScene->~cGameNode();
+		if (_currentScene) _currentScene->Destroy();
 		_currentScene = find->second;
 
 		return S_OK;

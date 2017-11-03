@@ -163,6 +163,7 @@ struct ST_TNGLE_IDX
 
 #include "cObject.h"
 #include "cGameObject.h"
+#include "cGameNode.h"
 
 #include "cDeviceManager.h"
 #include "cTextureManager.h"

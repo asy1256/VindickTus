@@ -7,7 +7,7 @@ class cGameNode;
 class cSceneManager
 {
 private:
-	SINGLETONE(cSceneManager);
+	SINGLETONE(cSceneManager)
 
 public:
 	typedef std::map<std::string, cGameNode*> mapSceneList;

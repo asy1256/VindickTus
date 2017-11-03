@@ -1,9 +1,6 @@
 #include "stdafx.h"
 #include "cActionBezier.h"
 
-#include "cCubeMan.h"
-
-
 cActionBezier::cActionBezier()
 	: m_fActionTime(0.0f)
 	, m_fPassedTime(0.0f)
