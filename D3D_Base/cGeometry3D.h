@@ -1,6 +1,6 @@
 #pragma once
 
-#define COLMANAGER	cGeometry3D::GetInstance()
+#define g_pCOLLISIONMANAGER	cGeometry3D::GetInstance()
 
 #define AABBSphere(aabb, sphere) \
 	SphereAABB(Sphere, AABB)
@@ -102,63 +102,63 @@ class cGeometry3D
 private:
 public:
 		
-	float		Length(IN  Line& line);				// 두 점 사이의 길이를 구한다.
-	float		LengthSq(IN  Line& line);			// 두 점 사이의 길이의 제곱값을 구한다.
-	float		Magnitude(IN  D3DXVECTOR3& v);		// 각을 구한다.
-	float		MagnitudeSq(IN  D3DXVECTOR3& v);	// 각의 제곱을 구한다.
+	float		Length(Line& line);				// 두 점 사이의 길이를 구한다.
+	float		LengthSq(Line& line);			// 두 점 사이의 길이의 제곱값을 구한다.
+	float		Magnitude(D3DXVECTOR3& v);		// 각을 구한다.
+	float		MagnitudeSq(D3DXVECTOR3& v);	// 각의 제곱을 구한다.
 
-	Ray			FromPoints(IN  D3DXVECTOR3& from, IN  D3DXVECTOR3& to);	// Ray의 방향을 반환해준다.
+	Ray			FromPoints(D3DXVECTOR3& from, D3DXVECTOR3& to);	// Ray의 방향을 반환해준다.
 
-	D3DXVECTOR3 GetMin(IN  AABB& aabb);	// AABB의 min 점을 반환.
-	D3DXVECTOR3	GetMax(IN  AABB& aabb); // AABB의 max 점을 반환.
-	AABB		FromMinMax(IN  D3DXVECTOR3& min, IN  D3DXVECTOR3& max); // AABB 상자를 만들어냄
+	D3DXVECTOR3 GetMin(AABB& aabb);	// AABB의 min 점을 반환.
+	D3DXVECTOR3	GetMax(AABB& aabb); // AABB의 max 점을 반환.
+	AABB		FromMinMax(D3DXVECTOR3& min, D3DXVECTOR3& max); // AABB 상자를 만들어냄
 
-	float		PlaneEquation(IN  D3DXVECTOR3& pt, IN  Plane& plane);
+	float		PlaneEquation(D3DXVECTOR3& pt, Plane& plane);
 
 	// point test || bool 함수는 충돌했는지 안했는지 확인하는 함수
 	// point in sphere
-	bool		PointInSphere(IN  D3DXVECTOR3& point, IN  Sphere& sphere);
-	D3DXVECTOR3	ClosestPoint(IN  Sphere& sphere, IN  D3DXVECTOR3& point);
+	bool		PointInSphere(D3DXVECTOR3& point, Sphere& sphere);
+	D3DXVECTOR3	ClosestPoint(Sphere& sphere, D3DXVECTOR3& point);
 	// point in aabb(Axis Aligned Bounding Box)
-	bool		PointInAABB(IN  D3DXVECTOR3& point, IN  AABB& aabb);
-	D3DXVECTOR3	ClosestPoint(IN  AABB& aabb, IN  D3DXVECTOR3& point);
+	bool		PointInAABB(D3DXVECTOR3& point, AABB& aabb);
+	D3DXVECTOR3	ClosestPoint(AABB& aabb, D3DXVECTOR3& point);
 	// point in obb(Oriented Bounding Box)
-	bool		PointInOBB(IN  D3DXVECTOR3& point, IN  OBB& obb);
-	D3DXVECTOR3	ClosestPoint(IN  OBB& obb, IN  D3DXVECTOR3& point);
+	bool		PointInOBB(D3DXVECTOR3& point, OBB& obb);
+	D3DXVECTOR3	ClosestPoint(OBB& obb, D3DXVECTOR3& point);
 	// point in Plane
-	bool		PointOnPlane(IN  D3DXVECTOR3& point, IN  Plane& plane);
-	D3DXVECTOR3	ClosestPoint(IN  Plane& plane, IN  D3DXVECTOR3& point);
+	bool		PointOnPlane(D3DXVECTOR3& point, Plane& plane);
+	D3DXVECTOR3	ClosestPoint(Plane& plane, D3DXVECTOR3& point);
 	// point On line
-	bool		PointOnLine(IN  D3DXVECTOR3& point, IN  Line& line);
-	D3DXVECTOR3	ClosestPoint(IN  Line& line, IN  D3DXVECTOR3& point);
+	bool		PointOnLine(D3DXVECTOR3& point, Line& line);
+	D3DXVECTOR3	ClosestPoint(Line& line, D3DXVECTOR3& point);
 	// point On Ray
-	bool		PointOnRay(IN  D3DXVECTOR3& point, IN  Ray& ray);
-	D3DXVECTOR3	ClosestPoint(IN  Ray& ray, IN  D3DXVECTOR3& point);
+	bool		PointOnRay(D3DXVECTOR3& point, Ray& ray);
+	D3DXVECTOR3	ClosestPoint(Ray& ray,D3DXVECTOR3& point);
 
 	// sphere test
 	// sphere to Sphere
-	bool		SphereSphere(IN  Sphere& s1, IN  Sphere& s2);
+	bool		SphereSphere(Sphere& s1, Sphere& s2);
 	// sphere to aabb
-	bool		SphereAABB(IN  Sphere& sphere, IN  AABB& aabb);
+	bool		SphereAABB(Sphere& sphere, AABB& aabb);
 	// sphere to obb
-	bool		SphereOBB(IN  Sphere& sphere, IN  OBB& obb);
+	bool		SphereOBB(Sphere& sphere, OBB& obb);
 	// sphere to plane
-	bool		SpherePlane(IN  Sphere& sphere, IN  Plane& plane);
+	bool		SpherePlane(Sphere& sphere, Plane& plane);
 	// aabb to aabb
-	bool		AABBAABB(IN  AABB& aabb1, IN  AABB& aabb2);
+	bool		AABBAABB(AABB& aabb1, AABB& aabb2);
 	// aabb to obb
-	Interval	GetInterval(IN  AABB& rect, IN  D3DXVECTOR3& axis);
-	Interval	GetInterval(IN  OBB& rect, IN  D3DXVECTOR3& axis);
-	bool		OverlapOnAxis(IN  AABB& aabb, IN  OBB& obb, IN  D3DXVECTOR3 & axis);
-	bool		AABBOBB(IN  AABB& aabb, IN  OBB& obb);
+	Interval	GetInterval(AABB& rect, D3DXVECTOR3& axis);
+	Interval	GetInterval(OBB& rect, D3DXVECTOR3& axis);
+	bool		OverlapOnAxis(AABB& aabb, OBB& obb, D3DXVECTOR3 & axis);
+	bool		AABBOBB(AABB& aabb, OBB& obb);
 	// aabb to plane
-	bool		AABBPlane(IN  AABB& aabb, IN  Plane& plane);
+	bool		AABBPlane(AABB& aabb, Plane& plane);
 	// obb to obb
-	bool		OverlapOnAxis(IN  OBB& obb1, IN  OBB& obb2, IN  D3DXVECTOR3& axis);
-	bool		OBBOBB(IN  OBB& obb1, IN  OBB& obb2);
+	bool		OverlapOnAxis(OBB& obb1, OBB& obb2, D3DXVECTOR3& axis);
+	bool		OBBOBB(OBB& obb1, OBB& obb2);
 	// obb to plane
-	bool		OBBPlane(IN  OBB& obb, IN  Plane& plane);
+	bool		OBBPlane(OBB& obb, Plane& plane);
 	// plane to plane
-	bool		PlanePlane(IN  Plane& plane1, IN  Plane& plane2);
+	bool		PlanePlane(Plane& plane1, Plane& plane2);
 };
 

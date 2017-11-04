@@ -13,33 +13,33 @@ cGeometry3D::~cGeometry3D()
 
 // sq 는 제곱값을 반환해줌
 // 길이
-float cGeometry3D::Length(IN  Line & line)
+float cGeometry3D::Length(Line & line)
 {
 	// 점과 점 사이의 거리
 	return D3DXVec3Length(&(line.Start - line.End));
 }
 
-float cGeometry3D::LengthSq(IN  Line & line)
+float cGeometry3D::LengthSq(Line & line)
 {
 	// 점과 점 사이의 거리 제곱
 	return D3DXVec3LengthSq(&(line.Start - line.End));
 }
 
 // 각
-float cGeometry3D::Magnitude(IN  D3DXVECTOR3 & v)
+float cGeometry3D::Magnitude(D3DXVECTOR3 & v)
 {
 	// 각
 	return sqrtf(D3DXVec3Dot(&v, &v));
 }
 
-float cGeometry3D::MagnitudeSq(IN  D3DXVECTOR3 & v)
+float cGeometry3D::MagnitudeSq(D3DXVECTOR3 & v)
 {
 	// 각의 제곱
 	return D3DXVec3Dot(&v, &v);
 }
 
 // 점
-Ray cGeometry3D::FromPoints(IN  D3DXVECTOR3 & from, IN  D3DXVECTOR3 & to)
+Ray cGeometry3D::FromPoints(D3DXVECTOR3 & from, D3DXVECTOR3 & to)
 {
 	D3DXVECTOR3 out;
 	// 정규화(크기는 없애고 방향만 남기는 작업)
@@ -48,7 +48,7 @@ Ray cGeometry3D::FromPoints(IN  D3DXVECTOR3 & from, IN  D3DXVECTOR3 & to)
 }
 
 // AABB
-D3DXVECTOR3 cGeometry3D::GetMin(IN  AABB & aabb)
+D3DXVECTOR3 cGeometry3D::GetMin(AABB & aabb)
 {
 	D3DXVECTOR3 p1 = aabb.Origin + aabb.Size;
 	D3DXVECTOR3 p2 = aabb.Origin - aabb.Size;
@@ -56,7 +56,7 @@ D3DXVECTOR3 cGeometry3D::GetMin(IN  AABB & aabb)
 	return D3DXVECTOR3(fminf(p1.x,p2.x), fminf(p1.y, p2.y), fminf(p1.z,p2.z));
 }
 
-D3DXVECTOR3 cGeometry3D::GetMax(IN  AABB & aabb)
+D3DXVECTOR3 cGeometry3D::GetMax(AABB & aabb)
 {
 	D3DXVECTOR3 p1 = aabb.Origin + aabb.Size;
 	D3DXVECTOR3 p2 = aabb.Origin - aabb.Size;
@@ -64,14 +64,14 @@ D3DXVECTOR3 cGeometry3D::GetMax(IN  AABB & aabb)
 	return D3DXVECTOR3(fmaxf(p1.x, p2.x), fmaxf(p1.y, p2.y), fmaxf(p1.z, p2.z));
 }
 
-AABB cGeometry3D::FromMinMax(IN  D3DXVECTOR3 & min, IN  D3DXVECTOR3 & max)
+AABB cGeometry3D::FromMinMax(D3DXVECTOR3 & min, D3DXVECTOR3 & max)
 {
 	// 해당 물체의 최대위치와 최소위치를 구한다.
 	return AABB((min + max) * 0.5f, (max - min) * 0.5f);
 }
 
 // Plane
-float cGeometry3D::PlaneEquation(IN  D3DXVECTOR3 & pt, IN  Plane & plane)
+float cGeometry3D::PlaneEquation(D3DXVECTOR3 & pt, Plane & plane)
 {
 	// 내적을 구해 각을 알아낸다.
 	return D3DXVec3Dot(&pt, &plane.Normal);
@@ -79,7 +79,7 @@ float cGeometry3D::PlaneEquation(IN  D3DXVECTOR3 & pt, IN  Plane & plane)
 
 // point test
 // point in sphere
-bool cGeometry3D::PointInSphere(IN  D3DXVECTOR3 & point, IN  Sphere & sphere)
+bool cGeometry3D::PointInSphere(D3DXVECTOR3 & point, Sphere & sphere)
 {
 	// 점과 점 사이의 거리 제곱을 찾음
 	float magSq = D3DXVec3LengthSq(&(point - sphere.Position));
@@ -89,7 +89,7 @@ bool cGeometry3D::PointInSphere(IN  D3DXVECTOR3 & point, IN  Sphere & sphere)
 	return magSq < radSq;
 }
 
-D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  Sphere & sphere, IN  D3DXVECTOR3 & point)
+D3DXVECTOR3 cGeometry3D::ClosestPoint(Sphere & sphere, D3DXVECTOR3 & point)
 {
 	// 점과 구의 포지션의 거리를 구해서 저장한다.
 	D3DXVECTOR3 SphereToPoint = point - sphere.Position;
@@ -101,7 +101,7 @@ D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  Sphere & sphere, IN  D3DXVECTOR3 & poi
 }
 
 // point in aabb
-bool cGeometry3D::PointInAABB(IN  D3DXVECTOR3 & point, IN  AABB & aabb)
+bool cGeometry3D::PointInAABB(D3DXVECTOR3 & point, AABB & aabb)
 {
 	// 충돌검사할 aabb의 min point 과 max point를 구한다.
 	D3DXVECTOR3 Min = GetMin(aabb);
@@ -115,7 +115,7 @@ bool cGeometry3D::PointInAABB(IN  D3DXVECTOR3 & point, IN  AABB & aabb)
 	return true;
 }
 
-D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  AABB & aabb, IN  D3DXVECTOR3 & point)
+D3DXVECTOR3 cGeometry3D::ClosestPoint(AABB & aabb, D3DXVECTOR3 & point)
 {
 	D3DXVECTOR3 Result = point;		// 반환될 녀석
 	D3DXVECTOR3 Min = GetMin(aabb); 
@@ -135,7 +135,7 @@ D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  AABB & aabb, IN  D3DXVECTOR3 & point)
 }
 
 // point in obb
-bool cGeometry3D::PointInOBB(IN  D3DXVECTOR3 & point, IN  OBB & obb)
+bool cGeometry3D::PointInOBB(D3DXVECTOR3 & point, OBB & obb)
 {
 	// 점에서 상자의 위치를 빼서 방향을 구함.
 	D3DXVECTOR3 Dir = point - obb.Position;
@@ -165,7 +165,7 @@ bool cGeometry3D::PointInOBB(IN  D3DXVECTOR3 & point, IN  OBB & obb)
 	return true;
 }
 
-D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  OBB & obb, IN  D3DXVECTOR3 & point)
+D3DXVECTOR3 cGeometry3D::ClosestPoint(OBB & obb, D3DXVECTOR3 & point)
 {
 	// point 에서 obb의 중점으로의 방향
 	D3DXVECTOR3	Result = obb.Position;
@@ -198,13 +198,13 @@ D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  OBB & obb, IN  D3DXVECTOR3 & point)
 }
 
 // point in plane
-bool cGeometry3D::PointOnPlane(IN  D3DXVECTOR3 & point, IN  Plane & plane)
+bool cGeometry3D::PointOnPlane(D3DXVECTOR3 & point, Plane & plane)
 {
 	float Dot = D3DXVec3Dot(&point, &plane.Normal);
 	return Dot - plane.Distance == 0.0f; // 점이 평면의 표면에 있는지 확인 한다.
 }
 
-D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  Plane & plane, IN  D3DXVECTOR3 & point)
+D3DXVECTOR3 cGeometry3D::ClosestPoint(Plane & plane, D3DXVECTOR3 & point)
 {
 	float Dot = D3DXVec3Dot(&plane.Normal,&point);
 	float Distance = Dot - plane.Distance;
@@ -212,7 +212,7 @@ D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  Plane & plane, IN  D3DXVECTOR3 & point
 }
 
 // point on line
-bool cGeometry3D::PointOnLine(IN  D3DXVECTOR3 & point, IN  Line & line)
+bool cGeometry3D::PointOnLine(D3DXVECTOR3 & point, Line & line)
 {
 	// 점에서 가까운 선의 한 점을 구한다.
 	D3DXVECTOR3 Closest = ClosestPoint(line, point);
@@ -220,7 +220,7 @@ bool cGeometry3D::PointOnLine(IN  D3DXVECTOR3 & point, IN  Line & line)
 	return DistanceSq == 0.0f; // 점이 선의 위에 있는지 확인한다.
 }
 
-D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  Line & line, IN  D3DXVECTOR3 & point)
+D3DXVECTOR3 cGeometry3D::ClosestPoint(Line & line, D3DXVECTOR3 & point)
 {
 	D3DXVECTOR3	LVec = line.End - line.Start; // Line Vector
 
@@ -232,7 +232,7 @@ D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  Line & line, IN  D3DXVECTOR3 & point)
 }
 
 // point on ray
-bool cGeometry3D::PointOnRay(IN  D3DXVECTOR3 & point, IN  Ray & ray)
+bool cGeometry3D::PointOnRay(D3DXVECTOR3 & point, Ray & ray)
 {
 	if (point == ray.Origin) { return true; }
 
@@ -248,7 +248,7 @@ bool cGeometry3D::PointOnRay(IN  D3DXVECTOR3 & point, IN  Ray & ray)
 	return Diff == 1.0f; // Consider using epsilon!
 }
 
-D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  Ray & ray, IN  D3DXVECTOR3 & point)
+D3DXVECTOR3 cGeometry3D::ClosestPoint(Ray & ray, D3DXVECTOR3 & point)
 {
 	float t = D3DXVec3Dot(&(point - ray.Origin), &ray.Direction);
 
@@ -261,7 +261,7 @@ D3DXVECTOR3 cGeometry3D::ClosestPoint(IN  Ray & ray, IN  D3DXVECTOR3 & point)
 
 // sphere test
 // sphere to Sphere
-bool cGeometry3D::SphereSphere(IN  Sphere & s1, IN  Sphere & s2)
+bool cGeometry3D::SphereSphere(Sphere & s1, Sphere & s2)
 {
 	float radiisum = s1.Radius + s2.Radius; // 두 구의 반지름의 합을 구함
 	float sqDistance = MagnitudeSq(s1.Position - s2.Position); // 두 구의 중점을 이은 선의 길이의 제곱을 구함
@@ -270,7 +270,7 @@ bool cGeometry3D::SphereSphere(IN  Sphere & s1, IN  Sphere & s2)
 }
 
 // sphere to aabb
-bool cGeometry3D::SphereAABB(IN  Sphere & sphere, IN  AABB & aabb)
+bool cGeometry3D::SphereAABB(Sphere & sphere, AABB & aabb)
 {
 	// AABB박스에서 구까지 가장 가까운 점을 찾아서 저장.
 	D3DXVECTOR3 closestPoint = ClosestPoint(aabb, sphere.Position);
@@ -284,7 +284,7 @@ bool cGeometry3D::SphereAABB(IN  Sphere & sphere, IN  AABB & aabb)
 }
 
 // sphere to obb
-bool cGeometry3D::SphereOBB(IN  Sphere & sphere, IN  OBB & obb)
+bool cGeometry3D::SphereOBB(Sphere & sphere, OBB & obb)
 {
 	// obb박스에서 sphere원점까지 가까운 거리에 있는 점을 구함.
 	D3DXVECTOR3 closestPoint = ClosestPoint(obb, sphere.Position);
@@ -296,7 +296,7 @@ bool cGeometry3D::SphereOBB(IN  Sphere & sphere, IN  OBB & obb)
 }
 
 // sphere to plane
-bool cGeometry3D::SpherePlane(IN  Sphere & sphere, IN  Plane & plane)
+bool cGeometry3D::SpherePlane(Sphere & sphere, Plane & plane)
 { 
 	// plane에서 sphere원점까지 가까운 거리에 있는 점을 구함.
 	D3DXVECTOR3 closestPoint = ClosestPoint(plane, sphere.Position);
@@ -308,7 +308,7 @@ bool cGeometry3D::SpherePlane(IN  Sphere & sphere, IN  Plane & plane)
 }
 
 // aabb to aabb
-bool cGeometry3D::AABBAABB(IN  AABB & aabb1, IN  AABB & aabb2)
+bool cGeometry3D::AABBAABB(AABB & aabb1, AABB & aabb2)
 {
 	// first AABB의 최대 최소 포지션을 구함.
 	D3DXVECTOR3 aMin = GetMin(aabb1);
@@ -325,7 +325,7 @@ bool cGeometry3D::AABBAABB(IN  AABB & aabb1, IN  AABB & aabb2)
 }
 
 // aabb to obb
-Interval cGeometry3D::GetInterval(IN  AABB & rect, IN  D3DXVECTOR3 & axis)
+Interval cGeometry3D::GetInterval(AABB & rect, D3DXVECTOR3 & axis)
 {
 	// AABB의 최대 최소 포지션을 구함.
 	D3DXVECTOR3 min = GetMin(rect);
@@ -362,7 +362,7 @@ Interval cGeometry3D::GetInterval(IN  AABB & rect, IN  D3DXVECTOR3 & axis)
 	return result;
 }
 
-Interval cGeometry3D::GetInterval(IN  OBB & rect, IN  D3DXVECTOR3 & axis)
+Interval cGeometry3D::GetInterval(OBB & rect, D3DXVECTOR3 & axis)
 {
 	D3DXVECTOR3	vertex[8];
 
@@ -420,7 +420,7 @@ Interval cGeometry3D::GetInterval(IN  OBB & rect, IN  D3DXVECTOR3 & axis)
 }
 
 // 비교에 사용할 obb박스와 aabb박스를 임시로 만들어줌.
-bool cGeometry3D::OverlapOnAxis(IN  AABB & aabb, IN  OBB & obb, IN  D3DXVECTOR3 & axis)
+bool cGeometry3D::OverlapOnAxis(AABB & aabb, OBB & obb, D3DXVECTOR3 & axis)
 {
 	Interval a = GetInterval(aabb, axis);
 	Interval b = GetInterval(obb, axis);
@@ -428,7 +428,7 @@ bool cGeometry3D::OverlapOnAxis(IN  AABB & aabb, IN  OBB & obb, IN  D3DXVECTOR3 
 	return ((b.min <= a.max) && (a.min <= b.max));
 }
 
-bool cGeometry3D::AABBOBB(IN  AABB & aabb, IN  OBB & obb)
+bool cGeometry3D::AABBOBB(AABB & aabb, OBB & obb)
 {
 	 float* o = obb.Orientation;
 
@@ -458,7 +458,7 @@ bool cGeometry3D::AABBOBB(IN  AABB & aabb, IN  OBB & obb)
 }
 
 // aabb to plane
-bool cGeometry3D::AABBPlane(IN  AABB & aabb, IN  Plane & plane)
+bool cGeometry3D::AABBPlane(AABB & aabb, Plane & plane)
 {
 	float pLen = aabb.Size.x * fabsf(plane.Normal.x) +
 		aabb.Size.y * fabsf(plane.Normal.y) +
@@ -471,19 +471,23 @@ bool cGeometry3D::AABBPlane(IN  AABB & aabb, IN  Plane & plane)
 }
 
 // obb to obb
-bool cGeometry3D::OverlapOnAxis(IN  OBB & obb1, IN  OBB & obb2, IN  D3DXVECTOR3 & axis)
+bool cGeometry3D::OverlapOnAxis(OBB & obb1, OBB & obb2, D3DXVECTOR3 & axis)
 {
+	// 각각의 obb박스를 만들어서 최대 최소를 구해서 비교해서 충돌체크를 한다.
 	Interval a = GetInterval(obb1, axis);
 	Interval b = GetInterval(obb2, axis);
 
 	return ((b.min <= a.max) && (a.min <= b.max));
 }
 
-bool cGeometry3D::OBBOBB(IN  OBB & obb1, IN  OBB & obb2)
+bool cGeometry3D::OBBOBB(OBB & obb1, OBB & obb2)
 {
 	 float* o1 = obb1.Orientation;
 	 float* o2 = obb2.Orientation;
 
+	 // 3D상에서 물체간의 충돌을 확인하기위해서 최소 15개의 방향에서 체크를 해야하기 때문에
+	 // test 0,1,2 = obb1박스의 xyz회전프레임. test 3,4,5 = obb2박스의 xyz회전프레임.
+	 // 그리고 그 둘을 외적해서 만든 벡터 9개로 검사를 한다.
 	D3DXVECTOR3 test[15] = {
 		D3DXVECTOR3(o1[0],o1[1],o1[2]),
 		D3DXVECTOR3(o1[4],o1[5],o1[6]),
@@ -505,19 +509,18 @@ bool cGeometry3D::OBBOBB(IN  OBB & obb1, IN  OBB & obb2)
 	{
 		if (!OverlapOnAxis(obb1, obb2, test[i]))
 		{
-			return false; // seperating axis found
+			return false;
 		}
 	}
-
-	return true; // seperating axis not found
+	return true;
 }
 
 // obb to plane
 bool cGeometry3D::OBBPlane(IN  OBB & obb, IN  Plane & plane)
 {
-	// Local variables for readability only
+	//
 	 float* o = obb.Orientation;
-	D3DXVECTOR3 rot[] = {// rotation / orientation
+	D3DXVECTOR3 rot[] = {
 		D3DXVECTOR3(o[0],o[1],o[2]),
 		D3DXVECTOR3(o[4],o[5],o[6]),
 		D3DXVECTOR3(o[8],o[9],o[10])
@@ -535,7 +538,7 @@ bool cGeometry3D::OBBPlane(IN  OBB & obb, IN  Plane & plane)
 }
 
 // plane to plane
-bool cGeometry3D::PlanePlane(IN  Plane & plane1, IN  Plane & plane2)
+bool cGeometry3D::PlanePlane(Plane & plane1, Plane & plane2)
 {
 	// cross product returns 0 when used on parallel lines
 	D3DXVECTOR3 d;

@@ -171,3 +171,4 @@ struct ST_TNGLE_IDX
 #include "cTimeManager.h"
 #include "cSceneManager.h"
 #include "cKeyManager.h"
+#include "cGeometry3D.h"
