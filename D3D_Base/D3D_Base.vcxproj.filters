@@ -52,6 +52,9 @@
     <Filter Include="MANAGER">
       <UniqueIdentifier>{b5a98cf5-8b33-43a8-a245-6d097dc7c993}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{9f4976fc-32f3-4e4c-9d01-0f21662b1425}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -159,6 +162,9 @@
     <ClInclude Include="cGameNode.h">
       <Filter>Scene\SceneBase</Filter>
     </ClInclude>
+    <ClInclude Include="cGeometry3D.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -253,6 +259,9 @@
     </ClCompile>
     <ClCompile Include="cGameNode.cpp">
       <Filter>Scene\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="cGeometry3D.cpp">
+      <Filter>Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
