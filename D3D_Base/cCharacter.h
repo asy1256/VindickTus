@@ -2,6 +2,12 @@
 
 class cAction;
 
+struct MyStruct
+{
+	int nMaxHP;
+	int nCurrHP;
+};
+
 class cCharacter : public cGameObject
 {
 protected:

@@ -55,6 +55,33 @@
     <Filter Include="Player">
       <UniqueIdentifier>{e1922469-97f1-4e2f-b048-2b2aa07bc6c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="마비노기 영웅전">
+      <UniqueIdentifier>{2ce0097f-0e81-4ce3-840e-03dedbab1b37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="마비노기 영웅전\Unit">
+      <UniqueIdentifier>{f0126ec6-c2d6-41e0-9603-ad934743e901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="마비노기 영웅전\Unit\Player">
+      <UniqueIdentifier>{43231c1a-6c12-414c-9ee1-6c372f3fe8d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="마비노기 영웅전\Unit\Enemies">
+      <UniqueIdentifier>{5d49389d-6703-482a-9c11-d5228cb034b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="마비노기 영웅전\Map">
+      <UniqueIdentifier>{6085ed68-3cdf-41cf-a6e6-d9b1b30b9d46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="마비노기 영웅전\Scene">
+      <UniqueIdentifier>{4cc38202-49ec-4cb1-ac33-16163fd4161d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="마비노기 영웅전\Scene\BattleScene">
+      <UniqueIdentifier>{284f37da-02b2-4fc7-9891-d603f450d38c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="마비노기 영웅전\Scene\마을Scene">
+      <UniqueIdentifier>{dd8e11b6-cdae-4f26-86cf-12843d3f6b6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="마비노기 영웅전\Unit\NPC">
+      <UniqueIdentifier>{ead8881a-30bb-4da5-9aba-5022860e39b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -150,9 +177,6 @@
     <ClInclude Include="cObject.h">
       <Filter>Objects\ObjBase</Filter>
     </ClInclude>
-    <ClInclude Include="cCharacter.h">
-      <Filter>Objects\ObjBase</Filter>
-    </ClInclude>
     <ClInclude Include="cGameObject.h">
       <Filter>Objects\ObjBase</Filter>
     </ClInclude>
@@ -164,6 +188,12 @@
     </ClInclude>
     <ClInclude Include="player.h">
       <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="cCharacter.h">
+      <Filter>마비노기 영웅전\Unit</Filter>
+    </ClInclude>
+    <ClInclude Include="cPlayerManager.h">
+      <Filter>마비노기 영웅전\Unit\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -245,9 +275,6 @@
     <ClCompile Include="cHeightMap.cpp">
       <Filter>Map\HeightMap</Filter>
     </ClCompile>
-    <ClCompile Include="cCharacter.cpp">
-      <Filter>Objects\ObjBase</Filter>
-    </ClCompile>
     <ClCompile Include="cGameObject.cpp">
       <Filter>Objects\ObjBase</Filter>
     </ClCompile>
@@ -262,6 +289,12 @@
     </ClCompile>
     <ClCompile Include="player.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="cCharacter.cpp">
+      <Filter>마비노기 영웅전\Unit</Filter>
+    </ClCompile>
+    <ClCompile Include="cPlayerManager.cpp">
+      <Filter>마비노기 영웅전\Unit\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
