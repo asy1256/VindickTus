@@ -52,6 +52,9 @@
     <Filter Include="MANAGER">
       <UniqueIdentifier>{b5a98cf5-8b33-43a8-a245-6d097dc7c993}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{e1922469-97f1-4e2f-b048-2b2aa07bc6c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -159,6 +162,9 @@
     <ClInclude Include="cGameNode.h">
       <Filter>Scene\SceneBase</Filter>
     </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -253,6 +259,9 @@
     </ClCompile>
     <ClCompile Include="cGameNode.cpp">
       <Filter>Scene\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
