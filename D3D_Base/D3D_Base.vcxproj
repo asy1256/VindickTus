@@ -177,6 +177,7 @@
     <ClInclude Include="cObjectManager.h" />
     <ClInclude Include="cObjLoader.h" />
     <ClInclude Include="cRawLoader.h" />
+    <ClInclude Include="cSkyMap.h" />
     <ClInclude Include="cSphereMesh.h" />
     <ClInclude Include="cPyramid.h" />
     <ClInclude Include="cSceneManager.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="cObjectManager.cpp" />
     <ClCompile Include="cObjLoader.cpp" />
     <ClCompile Include="cRawLoader.cpp" />
+    <ClCompile Include="cSkyMap.cpp" />
     <ClCompile Include="cSphereMesh.cpp" />
     <ClCompile Include="cPyramid.cpp" />
     <ClCompile Include="cSceneManager.cpp" />

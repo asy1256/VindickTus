@@ -60,7 +60,7 @@ typedef struct OBB
 	std::vector<D3DXVECTOR3>	vecVertex;		// 박스의 버텍스
 
 	inline	OBB() : Size(1, 1, 1) {}
-	inline  OBB(D3DXVECTOR3& p,  D3DXVECTOR3& s,  D3DXMATRIXA16 o)
+	inline  OBB(D3DXVECTOR3& p,  D3DXVECTOR3& s,  D3DXMATRIXA16& o)
 		: Position(p), Size(s), Orientation(o) {}
 }OBB;
 

@@ -55,6 +55,9 @@
     <Filter Include="Collision">
       <UniqueIdentifier>{9f4976fc-32f3-4e4c-9d01-0f21662b1425}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SkyMap">
+      <UniqueIdentifier>{980ae245-0139-459a-9259-61c225b361c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -165,6 +168,9 @@
     <ClInclude Include="cGeometry3D.h">
       <Filter>Collision</Filter>
     </ClInclude>
+    <ClInclude Include="cSkyMap.h">
+      <Filter>SkyMap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -262,6 +268,9 @@
     </ClCompile>
     <ClCompile Include="cGeometry3D.cpp">
       <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="cSkyMap.cpp">
+      <Filter>SkyMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

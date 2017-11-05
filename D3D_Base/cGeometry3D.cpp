@@ -516,7 +516,7 @@ bool cGeometry3D::OBBOBB(OBB & obb1, OBB & obb2)
 }
 
 // obb to plane
-bool cGeometry3D::OBBPlane(IN  OBB & obb, IN  Plane & plane)
+bool cGeometry3D::OBBPlane(OBB & obb, Plane & plane)
 {
 	//
 	 float* o = obb.Orientation;
