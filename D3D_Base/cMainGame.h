@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cFxScene.h"
+
 class cMainGame
 {
 private:

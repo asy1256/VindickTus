@@ -52,6 +52,9 @@
     <Filter Include="MANAGER">
       <UniqueIdentifier>{b5a98cf5-8b33-43a8-a245-6d097dc7c993}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FX">
+      <UniqueIdentifier>{663b2da5-916c-4ce6-9dde-81e13fe7a90d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -159,6 +162,15 @@
     <ClInclude Include="cGameNode.h">
       <Filter>Scene\SceneBase</Filter>
     </ClInclude>
+    <ClInclude Include="cFxScene.h">
+      <Filter>Scene\SceneBase</Filter>
+    </ClInclude>
+    <ClInclude Include="cEffect.h">
+      <Filter>FX</Filter>
+    </ClInclude>
+    <ClInclude Include="cEffectWork.h">
+      <Filter>FX</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -253,6 +265,12 @@
     </ClCompile>
     <ClCompile Include="cGameNode.cpp">
       <Filter>Scene\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="cFxScene.cpp">
+      <Filter>Scene\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="cEffect.cpp">
+      <Filter>FX</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

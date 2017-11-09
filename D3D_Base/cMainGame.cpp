@@ -32,9 +32,9 @@ void cMainGame::SetLight()
 void cMainGame::Setup()
 {
 	SetLight();
-	//g_pSceneManager->addScene("Test1", new cTestScene);
+	g_pSceneManager->addScene("FxScene", new cFxScene);
 	//g_pSceneManager->addScene("Test2", new cTestScene2);
-	//g_pSceneManager->changeScene("Test1");
+	g_pSceneManager->changeScene("FxScene");
 }
 
 void cMainGame::Update()
