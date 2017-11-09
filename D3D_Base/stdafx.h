@@ -163,6 +163,21 @@ struct ST_TNGLE_IDX
 	{}
 };
 
+enum
+{
+	E_TEXT_1 = 1,
+	E_TEXT_2,
+	E_TEXT_3,
+	E_TEXT_4,
+	E_TEXT_5,
+	E_TEXT_6,
+	E_TEXT_7,
+	E_BUTTON_OK = 11,
+	E_BUTTOn_CLOSE,
+	E_BUTTOn_1,
+	E_BUTTOn_2,
+};
+
 #include "cObject.h"
 #include "cGameObject.h"
 #include "cGameNode.h"
@@ -171,5 +186,7 @@ struct ST_TNGLE_IDX
 #include "cTextureManager.h"
 #include "cObjectManager.h"
 #include "cTimeManager.h"
+#include "cFontManager.h"
 #include "cSceneManager.h"
 #include "cKeyManager.h"
+#include "cSpriteManager.h"

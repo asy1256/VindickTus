@@ -52,35 +52,50 @@
     <Filter Include="MANAGER">
       <UniqueIdentifier>{b5a98cf5-8b33-43a8-a245-6d097dc7c993}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{e1922469-97f1-4e2f-b048-2b2aa07bc6c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="마비노기 영웅전">
+    <Filter Include="MYJ">
       <UniqueIdentifier>{2ce0097f-0e81-4ce3-840e-03dedbab1b37}</UniqueIdentifier>
     </Filter>
-    <Filter Include="마비노기 영웅전\Unit">
+    <Filter Include="MYJ\Unit">
       <UniqueIdentifier>{f0126ec6-c2d6-41e0-9603-ad934743e901}</UniqueIdentifier>
     </Filter>
-    <Filter Include="마비노기 영웅전\Unit\Player">
+    <Filter Include="MYJ\Unit\Player">
       <UniqueIdentifier>{43231c1a-6c12-414c-9ee1-6c372f3fe8d3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="마비노기 영웅전\Unit\Enemies">
+    <Filter Include="MYJ\Unit\Enemies">
       <UniqueIdentifier>{5d49389d-6703-482a-9c11-d5228cb034b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="마비노기 영웅전\Map">
+    <Filter Include="MYJ\Unit\NPC">
+      <UniqueIdentifier>{ead8881a-30bb-4da5-9aba-5022860e39b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MYJ\Map">
       <UniqueIdentifier>{6085ed68-3cdf-41cf-a6e6-d9b1b30b9d46}</UniqueIdentifier>
     </Filter>
-    <Filter Include="마비노기 영웅전\Scene">
+    <Filter Include="MYJ\Scene">
       <UniqueIdentifier>{4cc38202-49ec-4cb1-ac33-16163fd4161d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="마비노기 영웅전\Scene\BattleScene">
+    <Filter Include="MYJ\Scene\BattleScene">
       <UniqueIdentifier>{284f37da-02b2-4fc7-9891-d603f450d38c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="마비노기 영웅전\Scene\마을Scene">
+    <Filter Include="MYJ\Scene\마을Scene">
       <UniqueIdentifier>{dd8e11b6-cdae-4f26-86cf-12843d3f6b6b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="마비노기 영웅전\Unit\NPC">
-      <UniqueIdentifier>{ead8881a-30bb-4da5-9aba-5022860e39b7}</UniqueIdentifier>
+    <Filter Include="MYJ\UI">
+      <UniqueIdentifier>{f97cc358-7c43-46ca-b960-68585bd0a20a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MYJ\UI\Inventroy">
+      <UniqueIdentifier>{0b0f632e-b602-4b6f-aac9-e7755e995ec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MYJ\UI\MyInformation">
+      <UniqueIdentifier>{473f4fc6-1d3f-4d8b-979d-b2bae833a2c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MYJ\UI\Shop">
+      <UniqueIdentifier>{bdaab59b-95e5-4754-ab2f-0f986130e307}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MYJ\Unit\Player\Berserker">
+      <UniqueIdentifier>{60d9545d-06da-4e02-ab91-5ff0cc80414c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MYJ\Unit\Enemies\Boss">
+      <UniqueIdentifier>{4499310e-4550-4f7d-af0d-ffe1599f6f0a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -186,14 +201,47 @@
     <ClInclude Include="cGameNode.h">
       <Filter>Scene\SceneBase</Filter>
     </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>Player</Filter>
+    <ClInclude Include="cPlayerManager.h">
+      <Filter>MYJ\Unit\Player</Filter>
     </ClInclude>
     <ClInclude Include="cCharacter.h">
-      <Filter>마비노기 영웅전\Unit</Filter>
+      <Filter>Objects\ObjBase</Filter>
     </ClInclude>
-    <ClInclude Include="cPlayerManager.h">
-      <Filter>마비노기 영웅전\Unit\Player</Filter>
+    <ClInclude Include="cSpriteManager.h">
+      <Filter>MANAGER</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIButton.h">
+      <Filter>MYJ\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIImageView.h">
+      <Filter>MYJ\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cUIObject.h">
+      <Filter>MYJ\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cTextView.h">
+      <Filter>MYJ\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="cInventroy.h">
+      <Filter>MYJ\UI\Inventroy</Filter>
+    </ClInclude>
+    <ClInclude Include="cFontManager.h">
+      <Filter>MANAGER</Filter>
+    </ClInclude>
+    <ClInclude Include="cBattleScene.h">
+      <Filter>MYJ\Scene\BattleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyBasic.h">
+      <Filter>MYJ\Unit\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="cBerserker.h">
+      <Filter>MYJ\Unit\Player\Berserker</Filter>
+    </ClInclude>
+    <ClInclude Include="cEnemyManager.h">
+      <Filter>MYJ\Unit\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="cDragon.h">
+      <Filter>MYJ\Unit\Enemies\Boss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -287,14 +335,47 @@
     <ClCompile Include="cGameNode.cpp">
       <Filter>Scene\SceneBase</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>Player</Filter>
+    <ClCompile Include="cPlayerManager.cpp">
+      <Filter>MYJ\Unit\Player</Filter>
     </ClCompile>
     <ClCompile Include="cCharacter.cpp">
-      <Filter>마비노기 영웅전\Unit</Filter>
+      <Filter>Objects\ObjBase</Filter>
     </ClCompile>
-    <ClCompile Include="cPlayerManager.cpp">
-      <Filter>마비노기 영웅전\Unit\Player</Filter>
+    <ClCompile Include="cSpriteManager.cpp">
+      <Filter>MANAGER</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIButton.cpp">
+      <Filter>MYJ\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIImageView.cpp">
+      <Filter>MYJ\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cUIObject.cpp">
+      <Filter>MYJ\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cTextView.cpp">
+      <Filter>MYJ\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="cInventroy.cpp">
+      <Filter>MYJ\UI\Inventroy</Filter>
+    </ClCompile>
+    <ClCompile Include="cFontManager.cpp">
+      <Filter>MANAGER</Filter>
+    </ClCompile>
+    <ClCompile Include="cBattleScene.cpp">
+      <Filter>MYJ\Scene\BattleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyBasic.cpp">
+      <Filter>MYJ\Unit\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="cBerserker.cpp">
+      <Filter>MYJ\Unit\Player\Berserker</Filter>
+    </ClCompile>
+    <ClCompile Include="cEnemyManager.cpp">
+      <Filter>MYJ\Unit\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="cDragon.cpp">
+      <Filter>MYJ\Unit\Enemies\Boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

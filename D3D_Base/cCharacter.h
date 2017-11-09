@@ -2,10 +2,30 @@
 
 class cAction;
 
-struct MyStruct
+struct UnitInfo
 {
-	int nMaxHP;
-	int nCurrHP;
+	int			nMaxHP;			// 최대 HP
+	int			nCurrHP;		// HP
+
+	int			nMaxSP;			// 최대 SP
+	int			nCurrSP;		// SP
+
+	int			nAttack;		// 공격력
+	int			nDefense;		// 방어력
+
+	int			nDetectionRange;// 상대방 탐지 거리
+	int			nAttackRange;	// 공격 범위
+
+	float		fSpeed;			// 속도
+
+	bool		m_bDie;			// 죽었는지 살았는지
+
+	UnitInfo() 
+		: m_bDie(false)
+	{
+
+	}
+	
 };
 
 class cCharacter : public cGameObject
@@ -20,7 +40,6 @@ protected:
 public:
 	cCharacter();
 	virtual ~cCharacter();
-
 
 	virtual void Setup();
 	virtual void Update();
