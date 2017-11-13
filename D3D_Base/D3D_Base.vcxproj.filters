@@ -55,6 +55,18 @@
     <Filter Include="FX">
       <UniqueIdentifier>{663b2da5-916c-4ce6-9dde-81e13fe7a90d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FX\EffectBase">
+      <UniqueIdentifier>{0ae8518c-bb09-48a1-85f2-47fda1fc3c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FX\EffectBase\PointSprite">
+      <UniqueIdentifier>{aeeb5748-5293-4bac-a337-38736df623c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FX\EffectBase\Billbord">
+      <UniqueIdentifier>{9f6cfd7f-e99e-4046-b4fb-a71c2eff925f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FX\EffectBase\GroundFx">
+      <UniqueIdentifier>{a69dbf48-4bbc-4e91-8d15-2910b397edfc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -166,10 +178,19 @@
       <Filter>Scene\SceneBase</Filter>
     </ClInclude>
     <ClInclude Include="cEffect.h">
-      <Filter>FX</Filter>
+      <Filter>FX\EffectBase</Filter>
+    </ClInclude>
+    <ClInclude Include="cPtSEffect.h">
+      <Filter>FX\EffectBase</Filter>
+    </ClInclude>
+    <ClInclude Include="cStamping.h">
+      <Filter>FX\EffectBase\PointSprite</Filter>
+    </ClInclude>
+    <ClInclude Include="cStonPtcSplash.h">
+      <Filter>FX\EffectBase\PointSprite</Filter>
     </ClInclude>
     <ClInclude Include="cEffectWork.h">
-      <Filter>FX</Filter>
+      <Filter>FX\EffectBase</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -270,7 +291,16 @@
       <Filter>Scene\SceneBase</Filter>
     </ClCompile>
     <ClCompile Include="cEffect.cpp">
-      <Filter>FX</Filter>
+      <Filter>FX\EffectBase</Filter>
+    </ClCompile>
+    <ClCompile Include="cPtSEffect.cpp">
+      <Filter>FX\EffectBase</Filter>
+    </ClCompile>
+    <ClCompile Include="cStamping.cpp">
+      <Filter>FX\EffectBase\PointSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="cStonPtcSplash.cpp">
+      <Filter>FX\EffectBase\PointSprite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

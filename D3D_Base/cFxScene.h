@@ -3,13 +3,15 @@
 #include "cGameNode.h"
 
 class cGrid;
-class cEffect;
+class cStamping;
+class cStonPtcSplash;
 
 class cFxScene : public cGameNode
 {
 private:
 	cGrid* m_pGrid;
-	cEffect* m_pEffect;
+	cStamping* m_pEffect;
+	cStonPtcSplash* m_pSton;
 
 public:
 	cFxScene();

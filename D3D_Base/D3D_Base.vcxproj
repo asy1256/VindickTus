@@ -176,10 +176,13 @@
     <ClInclude Include="cObject.h" />
     <ClInclude Include="cObjectManager.h" />
     <ClInclude Include="cObjLoader.h" />
+    <ClInclude Include="cPtSEffect.h" />
     <ClInclude Include="cRawLoader.h" />
     <ClInclude Include="cSphereMesh.h" />
     <ClInclude Include="cPyramid.h" />
     <ClInclude Include="cSceneManager.h" />
+    <ClInclude Include="cStamping.h" />
+    <ClInclude Include="cStonPtcSplash.h" />
     <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="cTimeManager.h" />
     <ClInclude Include="cTimer.h" />
@@ -213,10 +216,13 @@
     <ClCompile Include="cObject.cpp" />
     <ClCompile Include="cObjectManager.cpp" />
     <ClCompile Include="cObjLoader.cpp" />
+    <ClCompile Include="cPtSEffect.cpp" />
     <ClCompile Include="cRawLoader.cpp" />
     <ClCompile Include="cSphereMesh.cpp" />
     <ClCompile Include="cPyramid.cpp" />
     <ClCompile Include="cSceneManager.cpp" />
+    <ClCompile Include="cStamping.cpp" />
+    <ClCompile Include="cStonPtcSplash.cpp" />
     <ClCompile Include="cTextureManager.cpp" />
     <ClCompile Include="cTimeManager.cpp" />
     <ClCompile Include="cTimer.cpp" />
