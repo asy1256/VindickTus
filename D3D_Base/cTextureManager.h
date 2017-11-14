@@ -11,6 +11,7 @@ private:
 public:
 	
 	LPDIRECT3DTEXTURE9 GetTexture( std::string& sFullPath );
+	LPDIRECT3DTEXTURE9 GetAniFxTexture(std::string& sFullPath);
 
 	void Destroy();
 };

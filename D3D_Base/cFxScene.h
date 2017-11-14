@@ -5,6 +5,7 @@
 class cGrid;
 class cStamping;
 class cStonPtcSplash;
+class cFireAni;
 
 class cFxScene : public cGameNode
 {
@@ -12,6 +13,7 @@ private:
 	cGrid* m_pGrid;
 	cStamping* m_pEffect;
 	cStonPtcSplash* m_pSton;
+	cFireAni* m_pFire;
 
 public:
 	cFxScene();

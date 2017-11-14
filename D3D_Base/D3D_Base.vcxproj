@@ -157,6 +157,7 @@
     <ClInclude Include="cActionLinear.h" />
     <ClInclude Include="cActionRepeat.h" />
     <ClInclude Include="cActionSeq.h" />
+    <ClInclude Include="cBillbordEffect.h" />
     <ClInclude Include="cCamera.h" />
     <ClInclude Include="cCharacter.h" />
     <ClInclude Include="cCube.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="cDie.h" />
     <ClInclude Include="cEffect.h" />
     <ClInclude Include="cEffectWork.h" />
+    <ClInclude Include="cFireAni.h" />
     <ClInclude Include="cFxScene.h" />
     <ClInclude Include="cGameNode.h" />
     <ClInclude Include="cGameObject.h" />
@@ -198,12 +200,14 @@
     <ClCompile Include="cActionLinear.cpp" />
     <ClCompile Include="cActionRepeat.cpp" />
     <ClCompile Include="cActionSeq.cpp" />
+    <ClCompile Include="cBillbordEffect.cpp" />
     <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cCharacter.cpp" />
     <ClCompile Include="cCube.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cDie.cpp" />
     <ClCompile Include="cEffect.cpp" />
+    <ClCompile Include="cFireAni.cpp" />
     <ClCompile Include="cFxScene.cpp" />
     <ClCompile Include="cGameNode.cpp" />
     <ClCompile Include="cGameObject.cpp" />

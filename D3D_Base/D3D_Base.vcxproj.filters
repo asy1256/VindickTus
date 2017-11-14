@@ -58,14 +58,14 @@
     <Filter Include="FX\EffectBase">
       <UniqueIdentifier>{0ae8518c-bb09-48a1-85f2-47fda1fc3c2c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FX\EffectBase\PointSprite">
-      <UniqueIdentifier>{aeeb5748-5293-4bac-a337-38736df623c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FX\EffectBase\Billbord">
+    <Filter Include="FX\Billbord">
       <UniqueIdentifier>{9f6cfd7f-e99e-4046-b4fb-a71c2eff925f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FX\EffectBase\GroundFx">
+    <Filter Include="FX\GroundFx">
       <UniqueIdentifier>{a69dbf48-4bbc-4e91-8d15-2910b397edfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FX\PointSprite">
+      <UniqueIdentifier>{aeeb5748-5293-4bac-a337-38736df623c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -184,13 +184,19 @@
       <Filter>FX\EffectBase</Filter>
     </ClInclude>
     <ClInclude Include="cStamping.h">
-      <Filter>FX\EffectBase\PointSprite</Filter>
+      <Filter>FX\PointSprite</Filter>
     </ClInclude>
     <ClInclude Include="cStonPtcSplash.h">
-      <Filter>FX\EffectBase\PointSprite</Filter>
+      <Filter>FX\PointSprite</Filter>
     </ClInclude>
     <ClInclude Include="cEffectWork.h">
       <Filter>FX\EffectBase</Filter>
+    </ClInclude>
+    <ClInclude Include="cBillbordEffect.h">
+      <Filter>FX\EffectBase</Filter>
+    </ClInclude>
+    <ClInclude Include="cFireAni.h">
+      <Filter>FX\Billbord</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -297,10 +303,16 @@
       <Filter>FX\EffectBase</Filter>
     </ClCompile>
     <ClCompile Include="cStamping.cpp">
-      <Filter>FX\EffectBase\PointSprite</Filter>
+      <Filter>FX\PointSprite</Filter>
     </ClCompile>
     <ClCompile Include="cStonPtcSplash.cpp">
-      <Filter>FX\EffectBase\PointSprite</Filter>
+      <Filter>FX\PointSprite</Filter>
+    </ClCompile>
+    <ClCompile Include="cBillbordEffect.cpp">
+      <Filter>FX\EffectBase</Filter>
+    </ClCompile>
+    <ClCompile Include="cFireAni.cpp">
+      <Filter>FX\Billbord</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
