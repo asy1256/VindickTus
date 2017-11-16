@@ -67,6 +67,12 @@
     <Filter Include="FX\PointSprite">
       <UniqueIdentifier>{aeeb5748-5293-4bac-a337-38736df623c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FX\Unique">
+      <UniqueIdentifier>{a9a000e5-7234-4355-8ab0-e328176f9e77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FX\Mesh">
+      <UniqueIdentifier>{d32dd4dd-14a7-4b50-88c6-2ef12e704d65}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -198,6 +204,12 @@
     <ClInclude Include="cFireAni.h">
       <Filter>FX\Billbord</Filter>
     </ClInclude>
+    <ClInclude Include="cRandom.h">
+      <Filter>MANAGER</Filter>
+    </ClInclude>
+    <ClInclude Include="cBreath.h">
+      <Filter>FX\PointSprite</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -313,6 +325,12 @@
     </ClCompile>
     <ClCompile Include="cFireAni.cpp">
       <Filter>FX\Billbord</Filter>
+    </ClCompile>
+    <ClCompile Include="cRandom.cpp">
+      <Filter>MANAGER</Filter>
+    </ClCompile>
+    <ClCompile Include="cBreath.cpp">
+      <Filter>FX\PointSprite</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

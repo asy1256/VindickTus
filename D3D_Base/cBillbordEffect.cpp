@@ -28,8 +28,8 @@ void cBillbordEffect::PreRender()
 
 	g_pD3DDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, true);
 	g_pD3DDevice->SetRenderState(D3DRS_ZWRITEENABLE, false);
-	g_pD3DDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	g_pD3DDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+	g_pD3DDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_ONE);
+	g_pD3DDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 
 	D3DXMATRIXA16 view, bill;
 	g_pD3DDevice->GetTransform(D3DTS_VIEW, &view);
@@ -44,7 +44,6 @@ void cBillbordEffect::PreRender()
 
 void cBillbordEffect::Render()
 {
-
 }
 
 void cBillbordEffect::PostRender()

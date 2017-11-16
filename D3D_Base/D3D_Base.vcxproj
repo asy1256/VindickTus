@@ -158,6 +158,7 @@
     <ClInclude Include="cActionRepeat.h" />
     <ClInclude Include="cActionSeq.h" />
     <ClInclude Include="cBillbordEffect.h" />
+    <ClInclude Include="cBreath.h" />
     <ClInclude Include="cCamera.h" />
     <ClInclude Include="cCharacter.h" />
     <ClInclude Include="cCube.h" />
@@ -179,6 +180,7 @@
     <ClInclude Include="cObjectManager.h" />
     <ClInclude Include="cObjLoader.h" />
     <ClInclude Include="cPtSEffect.h" />
+    <ClInclude Include="cRandom.h" />
     <ClInclude Include="cRawLoader.h" />
     <ClInclude Include="cSphereMesh.h" />
     <ClInclude Include="cPyramid.h" />
@@ -201,6 +203,7 @@
     <ClCompile Include="cActionRepeat.cpp" />
     <ClCompile Include="cActionSeq.cpp" />
     <ClCompile Include="cBillbordEffect.cpp" />
+    <ClCompile Include="cBreath.cpp" />
     <ClCompile Include="cCamera.cpp" />
     <ClCompile Include="cCharacter.cpp" />
     <ClCompile Include="cCube.cpp" />
@@ -221,6 +224,7 @@
     <ClCompile Include="cObjectManager.cpp" />
     <ClCompile Include="cObjLoader.cpp" />
     <ClCompile Include="cPtSEffect.cpp" />
+    <ClCompile Include="cRandom.cpp" />
     <ClCompile Include="cRawLoader.cpp" />
     <ClCompile Include="cSphereMesh.cpp" />
     <ClCompile Include="cPyramid.cpp" />

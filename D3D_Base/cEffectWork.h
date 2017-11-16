@@ -9,17 +9,20 @@ struct ST_SPPT_DATA
 	float life;
 	float age;
 	float roty;
+	float size;
 	D3DXCOLOR color;
 	D3DXCOLOR colorfade;
 	bool isAlive;
 	bool isTriger;
 
 	ST_SPPT_DATA()
-		: pos(0, 0, 0)
-		, dir(0, 0, 0)
-		, speed(0.f)
-		, life(0.f)
-		, age(0.f)
+		: pos(0.0f, 0.0f, 0.0f)
+		, dir(0.0f, 0.0f, 0.0f)
+		, speed(0.0f)
+		, life(0.0f)
+		, age(0.0f)
+		, roty(0.0f)
+		, size(0.0f)
 		, isAlive(true)
 	{
 		ZeroMemory(&color, sizeof(D3DXCOLOR));

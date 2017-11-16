@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "cStamping.h"
-#include <time.h>
 
 cStamping::cStamping()
 {
@@ -12,8 +11,6 @@ cStamping::~cStamping()
 
 void cStamping::Setup(int maxparticle, float lange)
 {
-	srand(time(NULL));
-
 	m_vbOffset = 0;
 	m_nMaxParticle = m_vbSize = maxparticle;
 	m_vbBatchSize = maxparticle;

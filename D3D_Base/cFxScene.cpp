@@ -26,14 +26,14 @@ HRESULT cFxScene::Setup()
 	m_pGrid = new cGrid;
 	m_pGrid->Setup();
 
-	//m_pEffect = new cStamping;
-	//m_pEffect->Setup(90, 5.0f);
-	//
-	//m_pSton = new cStonPtcSplash;
-	//m_pSton->Setup(30);
-
+	m_pEffect = new cStamping;
+	m_pEffect->Setup(90, 5.0f);
+	
+	m_pSton = new cStonPtcSplash;
+	m_pSton->Setup(30);
+	
 	m_pFire = new cFireAni;
-	m_pFire->Setup();
+	m_pFire->Setup(100, 3.0f);
 
 	return S_OK;
 }

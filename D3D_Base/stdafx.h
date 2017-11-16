@@ -109,6 +109,15 @@ struct ST_PT_VERTEX
 	enum { FVF = D3DFVF_XYZ | D3DFVF_TEX1 };
 };
 
+struct ST_PTS_VERTEX
+{
+	D3DXVECTOR3 p;
+	D3DXVECTOR2 t;
+	float s;
+
+	enum { FVF = D3DFVF_XYZ | D3DFVF_TEX1 | D3DFVF_PSIZE };
+};
+
 struct ST_NODE_TM
 {
 	D3DXMATRIXA16 matTm;
@@ -165,6 +174,7 @@ struct ST_TNGLE_IDX
 #include "cGameObject.h"
 #include "cGameNode.h"
 
+#include "cRandom.h"
 #include "cDeviceManager.h"
 #include "cTextureManager.h"
 #include "cObjectManager.h"
