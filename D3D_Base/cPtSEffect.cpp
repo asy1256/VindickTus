@@ -26,10 +26,10 @@ void cPtSEffect::PreRender()
 	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
 	g_pD3DDevice->SetRenderState(D3DRS_POINTSPRITEENABLE, true);
 	g_pD3DDevice->SetRenderState(D3DRS_POINTSCALEENABLE, true);
-	g_pD3DDevice->SetRenderState(D3DRS_POINTSIZE, FtoDW(m_fSize));
+	g_pD3DDevice->SetRenderState(D3DRS_POINTSIZE, FtoDW(1.0f));
 	g_pD3DDevice->SetRenderState(D3DRS_POINTSIZE_MIN, FtoDW(0.0f));
 	g_pD3DDevice->SetRenderState(D3DRS_POINTSIZE_MAX, FtoDW(100.0f));
-
+	
 	g_pD3DDevice->SetRenderState(D3DRS_POINTSCALE_A, FtoDW(1.0f));
 	g_pD3DDevice->SetRenderState(D3DRS_POINTSCALE_B, FtoDW(1.0f));
 	g_pD3DDevice->SetRenderState(D3DRS_POINTSCALE_C, FtoDW(1.0f));
@@ -48,16 +48,16 @@ void cPtSEffect::Render()
 	PreRender();
 
 	g_pD3DDevice->SetTexture(0, m_pTexture);
-	g_pD3DDevice->SetFVF(ST_PC_VERTEX::FVF);
-	g_pD3DDevice->SetStreamSource(0, m_pEffect, 0, sizeof(ST_PC_VERTEX));
+	g_pD3DDevice->SetFVF(ST_PCS_VERTEX::FVF);
+	g_pD3DDevice->SetStreamSource(0, m_pEffect, 0, sizeof(ST_PCS_VERTEX));
 	g_pD3DDevice->SetTransform(D3DTS_WORLD, &m_matWorld);
 
-	ST_PC_VERTEX* sprite;
+	ST_PCS_VERTEX* sprite;
 
 	if (m_vbOffset >= m_vbSize)
 		m_vbOffset = 0;
 
-	m_pEffect->Lock(m_vbOffset * sizeof(ST_PC_VERTEX), m_vbBatchSize * sizeof(ST_PC_VERTEX)
+	m_pEffect->Lock(m_vbOffset * sizeof(ST_PCS_VERTEX), m_vbBatchSize * sizeof(ST_PCS_VERTEX)
 		, (void**)&sprite, m_vbOffset ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
 
 	DWORD dwInsertParticle = 0;
@@ -69,6 +69,7 @@ void cPtSEffect::Render()
 
 		sprite->p = i->pos;
 		sprite->c = (D3DCOLOR)i->color;
+		sprite->s = i->size;
 		++sprite;
 		++dwInsertParticle;
 
@@ -83,7 +84,7 @@ void cPtSEffect::Render()
 			if (m_vbOffset >= m_vbSize)
 				m_vbOffset = 0;
 
-			m_pEffect->Lock(m_vbOffset * sizeof(ST_PC_VERTEX), m_vbBatchSize * sizeof(ST_PC_VERTEX)
+			m_pEffect->Lock(m_vbOffset * sizeof(ST_PCS_VERTEX), m_vbBatchSize * sizeof(ST_PCS_VERTEX)
 				, (void**)&sprite, m_vbOffset ? D3DLOCK_NOOVERWRITE : D3DLOCK_DISCARD);
 
 			dwInsertParticle = 0;

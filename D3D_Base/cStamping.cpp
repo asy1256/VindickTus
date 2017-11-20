@@ -14,15 +14,14 @@ void cStamping::Setup(int maxparticle, float lange)
 	m_vbOffset = 0;
 	m_nMaxParticle = m_vbSize = maxparticle;
 	m_vbBatchSize = maxparticle;
-	m_fSize = 2.0f;
 	m_fLength = lange;
 
 	m_pTexture = g_pTextureManager->GetTexture(std::string("fx/cold_dust.png"));
 
 	g_pD3DDevice->CreateVertexBuffer(
-		m_vbSize * sizeof(ST_PC_VERTEX),
+		m_vbSize * sizeof(ST_PCS_VERTEX),
 		D3DUSAGE_DYNAMIC | D3DUSAGE_POINTS | D3DUSAGE_WRITEONLY,
-		ST_PC_VERTEX::FVF,
+		ST_PCS_VERTEX::FVF,
 		D3DPOOL_DEFAULT, // D3DPOOL_MANAGED can't be used with D3DUSAGE_DYNAMIC
 		&m_pEffect,
 		0);
@@ -33,10 +32,11 @@ void cStamping::Setup(int maxparticle, float lange)
 	temp.speed = 0.05f;
 	temp.color = D3DXCOLOR(0.7f, 0.7f, 0.7f, 0.7f);
 	temp.colorfade = D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.1f);
+	temp.size = 0.5f;
 	D3DXMATRIX matR;
 	for (int i = 0; i < maxparticle; ++i)
 	{
-		temp.roty = D3DXToRadian(i) * 4; 
+		temp.roty = D3DXToRadian(i) * 4;
 		D3DXMatrixRotationY(&matR, temp.roty);
 		temp.dir = D3DXVECTOR3(0, 0, 1);
 		D3DXVec3TransformNormal(&temp.dir, &temp.dir, &matR);
@@ -62,6 +62,7 @@ void cStamping::Update()
 		{
 			m_vecWork[j]->Work(*i);
 		}
+		i->size += 0.1f;
 	}
 }
 

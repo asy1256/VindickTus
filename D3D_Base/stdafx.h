@@ -80,6 +80,15 @@ struct ST_PC_VERTEX
 	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
 };
 
+struct ST_PCS_VERTEX
+{
+	D3DXVECTOR3 p;
+	D3DCOLOR	c;
+	float		s;
+
+	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_PSIZE };
+};
+
 struct ST_PN_VERTEX
 {
 	D3DXVECTOR3 p;
@@ -107,15 +116,6 @@ struct ST_PT_VERTEX
 	D3DXVECTOR2 t;
 
 	enum { FVF = D3DFVF_XYZ | D3DFVF_TEX1 };
-};
-
-struct ST_PTS_VERTEX
-{
-	D3DXVECTOR3 p;
-	D3DXVECTOR2 t;
-	float s;
-
-	enum { FVF = D3DFVF_XYZ | D3DFVF_TEX1 | D3DFVF_PSIZE };
 };
 
 struct ST_NODE_TM

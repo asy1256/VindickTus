@@ -30,6 +30,14 @@ struct ST_SPPT_DATA
 	}
 };
 
+struct ST_OUTPUT_VS
+{
+	D3DXVECTOR3 pos;
+	D3DXVECTOR2 uv;
+	float size;
+	D3DCOLOR	color;
+};
+
 struct ST_EFX_WORK
 {
 public:
