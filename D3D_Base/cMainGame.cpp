@@ -32,9 +32,9 @@ void cMainGame::SetLight()
 void cMainGame::Setup()
 {
 	SetLight();
-	//g_pSceneManager->addScene("Test1", new cTestScene);
 	//g_pSceneManager->addScene("Test2", new cTestScene2);
-	//g_pSceneManager->changeScene("Test1");
+	g_pSceneManager->addScene("Map", new cMapTest);
+	g_pSceneManager->changeScene("Map");
 }
 
 void cMainGame::Update()

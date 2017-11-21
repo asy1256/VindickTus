@@ -60,9 +60,6 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -159,6 +156,21 @@
     <ClInclude Include="cGameNode.h">
       <Filter>Scene\SceneBase</Filter>
     </ClInclude>
+    <ClInclude Include="cQuadTree.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="cMapTest.h">
+      <Filter>Scene\SceneBase</Filter>
+    </ClInclude>
+    <ClInclude Include="cCustomMap.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="cGeometry3D.h">
+      <Filter>MANAGER</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>MANAGER</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -253,6 +265,18 @@
     </ClCompile>
     <ClCompile Include="cGameNode.cpp">
       <Filter>Scene\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="cQuadTree.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="cMapTest.cpp">
+      <Filter>Scene\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="cCustomMap.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="cGeometry3D.cpp">
+      <Filter>MANAGER</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

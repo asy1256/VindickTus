@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cMapTest.h"
+
 class cMainGame
 {
 private:

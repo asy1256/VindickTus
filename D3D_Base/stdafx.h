@@ -35,6 +35,7 @@
 extern HWND g_hWnd;
 extern POINT g_ptMouse;
 extern LPPOINT g_pMouse;
+extern float g_fTileSize;
 
 #define SAFE_RELEASE(p) { if (p) p->Release(); p = NULL; }
 #define SAFE_DELETE(p) { if (p) delete p; p = NULL; }
@@ -164,6 +165,7 @@ struct ST_TNGLE_IDX
 #include "cObject.h"
 #include "cGameObject.h"
 #include "cGameNode.h"
+#include "cGeometry3D.h"
 
 #include "cDeviceManager.h"
 #include "cTextureManager.h"

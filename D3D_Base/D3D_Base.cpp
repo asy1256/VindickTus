@@ -15,6 +15,7 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 HWND g_hWnd;
 POINT g_ptMouse;
 LPPOINT g_pMouse = &g_ptMouse;
+float g_fTileSize = 0.0f;
 cMainGame*	g_pMainGame;
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
