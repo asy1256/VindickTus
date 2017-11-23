@@ -7,6 +7,7 @@ cMainGame::cMainGame()
 
 cMainGame::~cMainGame()
 {
+	g_pObjectManager->Destroy();
 	g_pTextureManager->Destroy();
 	g_pSceneManager->Destroy();
 	g_pDeviceManager->Destroy();

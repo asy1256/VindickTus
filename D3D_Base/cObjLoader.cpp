@@ -37,26 +37,12 @@ void cObjLoader::Load( OUT std::vector<cGroup*>& vecGroup,
 		char szBuf[1024];
 		fgets(szBuf, 1024, fp);
 
-		if ( szBuf[0] == '#' )
-		{
-			continue;
-		}
-		else if ( szBuf[0] == 'm' )
+		if ( szBuf[0] == 'm' )
 		{
 			char szMtlFile[1024];
 			sscanf_s( szBuf, "%*s %s", szMtlFile, 1024 );
 			// 메테리얼 정보 로드
 			LoadMtlLib(szFolder, szMtlFile);
-		}
-		else if ( szBuf[0] == 'g' )
-		{
-			if ( !vecVertex.empty() )
-			{
-				cGroup* pGroup = new cGroup;
-				pGroup->SetVertex( vecVertex );
-				vecGroup.push_back( pGroup );
-				vecVertex.clear();
-			}
 		}
 		else if ( szBuf[0] == 'v' )
 		{
@@ -224,24 +210,17 @@ void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, IN char * szFolder, IN 
 
 		if (szBuf[0] == '#')
 		{
-			continue;
+			//if (szBuf[2] == '0')
+			//{
+			//
+			//}
 		}
 		else if (szBuf[0] == 'm')
 		{
-			char szMtlFile[1024];
-			sscanf_s(szBuf, "%*s %s", szMtlFile, 1024);
-			// 메테리얼 정보 로드
-			LoadMtlLib(szFolder, szMtlFile);
-		}
-		else if (szBuf[0] == 'g')
-		{
-			if (!vecVertex.empty())
-			{
-				//cGroup* pGroup = new cGroup;
-				//pGroup->SetVertex(vecVertex);
-				//vecGroup.push_back(pGroup);
-				//vecVertex.clear();
-			}
+			//char szMtlFile[1024];
+			//sscanf_s(szBuf, "%*s %s", szMtlFile, 1024);
+			//// 메테리얼 정보 로드
+			//LoadMtlLib(szFolder, szMtlFile);
 		}
 		else if (szBuf[0] == 'v')
 		{
@@ -287,7 +266,8 @@ void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, IN char * szFolder, IN 
 		}
 	}
 
-	D3DXCreateMeshFVF(vecVertex.size() / 3, vecVertex.size(), 0, ST_PNT_VERTEX::FVF, g_pD3DDevice, &mesh);
+	D3DXCreateMeshFVF(vecVertex.size() / 3, vecVertex.size()
+		, 0, ST_PNT_VERTEX::FVF, g_pD3DDevice, &mesh);
 	ST_PNT_VERTEX* tV;
 	WORD* tW;
 	DWORD* tDW;
@@ -297,13 +277,13 @@ void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, IN char * szFolder, IN 
 	matWorld = matS * matR;
 
 	mesh->LockVertexBuffer(0, (void**)&tV);
-
+	
 	for (int i = 0; i < vecVertex.size(); ++i)
 	{
 		tV[i] = vecVertex[i];
-		D3DXVec3TransformCoord(&tV[i].p, &tV[i].p, &matWorld);
+		//D3DXVec3TransformCoord(&tV[i].p, &tV[i].p, &matWorld);
 	}
-
+	
 	mesh->UnlockVertexBuffer();
 
 	mesh->LockIndexBuffer(0, (void**)&tW);

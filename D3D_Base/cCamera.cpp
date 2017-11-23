@@ -42,7 +42,7 @@ void cCamera::Update()
 	D3DXMatrixRotationY(&matRY, m_vCamRotAngle.y);
 	matR = matRX * matRY;
 
-	m_vEye = D3DXVECTOR3(0, 5, -0.5);
+	m_vEye = D3DXVECTOR3(0, 0, -m_fCameraDistance);
 	D3DXVec3TransformCoord(&m_vEye, &m_vEye, &matR);
 
 	D3DXMATRIXA16	matView;
