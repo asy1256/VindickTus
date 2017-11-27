@@ -31,10 +31,17 @@ private:
 	std::set<cObject*> m_setObject;
 	std::map <std::string, LPD3DXMESH> m_mapObject;
 	std::vector<ST_OBJ_DATA> m_vecObject;
+	std::vector<int> m_vecObjType;
+
+	int m_nNumObj;
 	
 public:
-	void CreateObject(D3DXVECTOR3 pos, char* szFolder, char* szFile, char* szTex);
+	void CreateObject(D3DXVECTOR3 pos, char* szFolder, char* szObj, char* szTex, int type);
+	void LoadObjectData(ST_OBJ_DATA& obj, int objNum);
 	void Render();
+
+	void SaveObject();
+	void LoadObject();
 
 public:
 	void AddObject(cObject* pObject)

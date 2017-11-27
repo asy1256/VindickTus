@@ -185,18 +185,15 @@ void cObjLoader::LoadMtlLib( IN char * szFolder, IN char * szMtlFile )
 	fclose( fp );
 }
 
-void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, IN char * szFolder, IN char * szFile)
+void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, std::string fullpath)
 {
 	std::vector<D3DXVECTOR3> vecV;
 	std::vector<D3DXVECTOR2> vecVT;
 	std::vector<D3DXVECTOR3> vecVN;
 	std::vector<ST_PNT_VERTEX> vecVertex;
 
-	std::string sFullPath(szFolder);
-	sFullPath += (std::string("/") + std::string(szFile));
-
 	FILE* fp;
-	fopen_s(&fp, sFullPath.c_str(), "r");
+	fopen_s(&fp, fullpath.c_str(), "r");
 
 	while (true)
 	{
@@ -234,7 +231,7 @@ void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, IN char * szFolder, IN 
 			{
 				float u, v;
 				sscanf_s(szBuf, "%*s %f %f %*f", &u, &v);
-				vecVT.push_back(D3DXVECTOR2(u, v));
+				vecVT.push_back(D3DXVECTOR2(u, 1.0f - v));
 			}
 			else if (szBuf[1] == 'n')	// 노말정보
 			{
@@ -272,16 +269,16 @@ void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, IN char * szFolder, IN 
 	WORD* tW;
 	DWORD* tDW;
 	D3DXMATRIXA16 matS, matR, matWorld;
-	D3DXMatrixScaling(&matS, 0.02f, 0.02f, 0.02f);
+	D3DXMatrixScaling(&matS, 0.01f, 0.01f, 0.01f);
 	D3DXMatrixRotationX(&matR, -D3DX_PI / 2);
-	matWorld = matS * matR;
+	matWorld = matS;
 
 	mesh->LockVertexBuffer(0, (void**)&tV);
 	
 	for (int i = 0; i < vecVertex.size(); ++i)
 	{
 		tV[i] = vecVertex[i];
-		//D3DXVec3TransformCoord(&tV[i].p, &tV[i].p, &matWorld);
+		D3DXVec3TransformCoord(&tV[i].p, &tV[i].p, &matWorld);
 	}
 	
 	mesh->UnlockVertexBuffer();

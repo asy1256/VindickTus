@@ -2,15 +2,14 @@
 #include "cMapTest.h"
 #include "cCustomMap.h"
 #include "cToolBar.h"
-
-#include "cObjLoader.h"
+#include "cGrid.h"
 
 cMapTest::cMapTest()
 	: m_pMap(NULL)
 	, m_pTool(NULL)
+	, m_pGrid(NULL)
 	, m_isToolOpen(false)
-	, m_me(NULL)
-	, m_loader(NULL)
+	, m_nNowSelect(10)
 {
 }
 
@@ -25,16 +24,15 @@ HRESULT cMapTest::Setup()
 	m_pCamera->Setup();
 
 	m_pMap = new cCustomMap;
-	m_pMap->Setup(17, 17, 1.0f);
+	m_pMap->Setup(129, 129, 2.0f);
+
+	m_pGrid = new cGrid;
+	m_pGrid->Setup();
 
 	m_pTool = new cToolBar;
 	m_pTool->Setup();
 	m_pTool->SetIsOpen(&m_isToolOpen);
-
-	//m_loader = new cObjLoader;
-	//m_loader->CreatMeshFromFile(m_me, "obj", "american_farm.obj");
-
-	//g_pObjectManager->CreateObject(D3DXVECTOR3(1, 0, 1), "obj", "american_farm.obj");
+	m_pTool->SetNowSelect(&m_nNowSelect);
 
 	return S_OK;
 }
@@ -45,6 +43,9 @@ void cMapTest::Update()
 		m_pCamera->Update();
 
 	if (KEYMANAGER->isOnceKeyDown('M')) { m_isToolOpen = (m_isToolOpen) ? false : true; }
+	
+	if (KEYMANAGER->isOnceKeyDown('S')) { g_pObjectManager->SaveObject(); };
+	if (KEYMANAGER->isOnceKeyDown('L')) { g_pObjectManager->LoadObject(); };
 
 	if (m_isToolOpen)
 	{
@@ -66,7 +67,7 @@ void cMapTest::Update()
 			GetRay(ray, pt.x, pt.y);
 			m_pMap->Picking(ray, pos);
 
-			g_pObjectManager->CreateObject(pos, "obj", "american_farm.obj", "american_farm.png");
+			MakeObject(pos);
 		}
 	}
 }
@@ -79,13 +80,8 @@ void cMapTest::Render()
 	if (m_pTool)
 		m_pTool->Render();
 
-
-	//D3DXMATRIXA16 world;
-	//D3DXMatrixIdentity(&world);
-	//g_pD3DDevice->SetTexture(0, NULL);
-	//g_pD3DDevice->SetTransform(D3DTS_WORLD, &world);
-	//if (m_me)
-	//	m_me->DrawSubset(0);
+	if (m_pGrid)
+		m_pGrid->Render();
 
 	g_pObjectManager->Render();
 }
@@ -94,8 +90,46 @@ void cMapTest::Destroy()
 {
 	SAFE_DELETE(m_pMap);
 	SAFE_DELETE(m_pTool);
-	SAFE_RELEASE(m_me);
-	SAFE_DELETE(m_loader);
+	SAFE_DELETE(m_pGrid);
+}
+
+void cMapTest::MakeObject(D3DXVECTOR3& pos)
+{
+	switch (m_nNowSelect)
+	{
+	case 0:
+		g_pObjectManager->CreateObject(pos, "obj", "LageRock01.obj", "T_Plains_Rock01_D.tga", m_nNowSelect);
+		break;
+	case 1:
+		g_pObjectManager->CreateObject(pos, "obj", "LageRock02.obj", "T_Plains_Rock01_D.tga", m_nNowSelect);
+		break;
+	case 2:
+		g_pObjectManager->CreateObject(pos, "obj", "LageRock_Cliff01.obj", "T_Plains_Cliff01.tga", m_nNowSelect);
+		break;
+	case 3:
+		g_pObjectManager->CreateObject(pos, "obj", "LageRock_Cliffside01.obj", "T_FlameDungeon_Cliffside01_D.tga", m_nNowSelect);
+		break;
+	case 4:
+		g_pObjectManager->CreateObject(pos, "obj", "LageRock_FireRock01.obj", "T_Env_Fire_Cliffs_TilingStone_02_D.tga", m_nNowSelect);
+		break;
+	case 5:
+		g_pObjectManager->CreateObject(pos, "obj", "Env_Fire_MelancholicTroll_D.obj", "Env_Fire_MelancholicTroll_D.tga", m_nNowSelect);
+		break;
+	case 6:
+		g_pObjectManager->CreateObject(pos, "obj", "LageRock_FireHeed.obj", "Env_Fire_NordHeed_D.tga", m_nNowSelect);
+		break;
+	case 7:
+		g_pObjectManager->CreateObject(pos, "obj", "SM_Plains_Column_Small_01.obj", "T_Plains_Ruins_Pillars_02_D.tga", m_nNowSelect);
+		break;
+	case 8:
+		g_pObjectManager->CreateObject(pos, "obj", "SM_Plains_Column_Mid_01.obj", "T_Plains_Ruins_Pillars_03_D.tga", m_nNowSelect);
+		break;
+	case 9:
+		g_pObjectManager->CreateObject(pos, "obj", "SM_FlameDungeon_ArchWall01.obj", "T_FlameDungeon_Wall01_D.tga", m_nNowSelect);
+		break;
+	default:
+		break;
+	}
 }
 
 void cMapTest::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

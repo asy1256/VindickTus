@@ -92,10 +92,10 @@ void cQuadTree::Picking(Ray& ray, D3DXVECTOR3& pick)
 		}
 		else
 		{
-			D3DXVECTOR3 lt = (*m_pVecVertex)[LT_TOP];
-			D3DXVECTOR3 rt = (*m_pVecVertex)[RT_TOP];
-			D3DXVECTOR3 lb = (*m_pVecVertex)[LT_BOT];
-			D3DXVECTOR3 rb = (*m_pVecVertex)[RT_BOT];
+			D3DXVECTOR3 lt = (*m_pVecVertex)[m_nConer[LT_TOP]];
+			D3DXVECTOR3 rt = (*m_pVecVertex)[m_nConer[RT_TOP]];
+			D3DXVECTOR3 lb = (*m_pVecVertex)[m_nConer[LT_BOT]];
+			D3DXVECTOR3 rb = (*m_pVecVertex)[m_nConer[RT_BOT]];
 
 			if (D3DXIntersectTri(&lt, &rb, &lb, &ray.Origin, &ray.Direction, NULL, NULL, &pick.y))
 			{

@@ -35,8 +35,8 @@ void cCustomMap::Setup(int nWidth, int nHeight, float fTileSize)
 		ST_PNT_VERTEX v;
 		v.p = D3DXVECTOR3((i % m_nRow) * g_fTileSize, 0.0f, (i / m_nRow) * g_fTileSize);
 		v.n = D3DXVECTOR3(0, 1, 0);
-		v.t = D3DXVECTOR2((i % m_nRow) / (float)m_nRow,
-			(i / m_nRow) / (float)m_nRow);
+		v.t = D3DXVECTOR2((i % m_nRow) * 8 / (float)m_nRow,
+			(i / m_nRow) * 8 / (float)m_nRow);
 		vecVertex[i] = v;
 		m_vecVertex[i] = v.p;
 	}
@@ -125,7 +125,7 @@ void cCustomMap::Setup(int nWidth, int nHeight, float fTileSize)
 		ZeroMemory(&m_mtl, sizeof(D3DMATERIAL9));
 		m_mtl.Ambient = m_mtl.Diffuse = m_mtl.Specular = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 
-		m_pTexture = g_pTextureManager->GetTexture(std::string("terrain/K_BlueCaustic002_emis2.jpg"));
+		m_pTexture = g_pTextureManager->GetTexture(std::string("terrain/cracksand.jpg"));
 	}
 	//¸Ê ÄõµåÆ®¸® »ı¼º
 	m_pQuadTree = new cQuadTree(nWidth, nHeight);
