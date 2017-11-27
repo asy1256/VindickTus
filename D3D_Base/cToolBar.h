@@ -33,6 +33,7 @@ private:
 	ST_IMG_DATA m_stPanel;
 	ST_IMG_DATA m_stObjectBtn;
 	ST_IMG_DATA m_stMenuBtn;
+	ST_IMG_DATA m_stTagButton[3];
 	ST_IMG_DATA m_stEnvSample[5];
 	ST_IMG_DATA m_stStcSample[5];
 	ST_IMG_DATA m_stSaLo[2];

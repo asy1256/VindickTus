@@ -4,6 +4,7 @@
 class cCustomMap;
 class cToolBar;
 class cGrid;
+class cFreeCam;
 
 class cMapTest : public cGameNode
 {
@@ -11,6 +12,7 @@ private:
 	cCustomMap* m_pMap;
 	cToolBar* m_pTool;
 	cGrid* m_pGrid;
+	cFreeCam* m_pCam;
 
 	bool m_isToolOpen;
 	int m_nNowSelect;

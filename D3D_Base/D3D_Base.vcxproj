@@ -164,6 +164,7 @@
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cDie.h" />
     <ClInclude Include="cFontManager.h" />
+    <ClInclude Include="cFreeCam.h" />
     <ClInclude Include="cGameNode.h" />
     <ClInclude Include="cGameObject.h" />
     <ClInclude Include="cGeometry3D.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cDie.cpp" />
     <ClCompile Include="cFontManager.cpp" />
+    <ClCompile Include="cFreeCam.cpp" />
     <ClCompile Include="cGameNode.cpp" />
     <ClCompile Include="cGameObject.cpp" />
     <ClCompile Include="cGeometry3D.cpp" />

@@ -58,8 +58,11 @@
     <Filter Include="UI\cToolbar">
       <UniqueIdentifier>{fa15d52b-7cd9-465b-b2af-4d2a9d384301}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FileLoader\BasicThings">
+    <Filter Include="BasicThings">
       <UniqueIdentifier>{69948fc1-1b09-4b41-8f1d-c5ba0e1da316}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BasicThings\Camera">
+      <UniqueIdentifier>{73654191-1892-4b3f-8b8d-c9acd4b9c7be}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -121,16 +124,16 @@
       <Filter>MANAGER</Filter>
     </ClInclude>
     <ClInclude Include="cCube.h">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClInclude>
     <ClInclude Include="cGrid.h">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClInclude>
     <ClInclude Include="cPyramid.h">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClInclude>
     <ClInclude Include="cCamera.h">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClInclude>
     <ClInclude Include="Asciitok.h">
       <Filter>FileLoader</Filter>
@@ -139,7 +142,7 @@
       <Filter>MANAGER</Filter>
     </ClInclude>
     <ClInclude Include="cSphereMesh.h">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClInclude>
     <ClInclude Include="cRawLoader.h">
       <Filter>FileLoader\RawLoader</Filter>
@@ -201,6 +204,9 @@
     <ClInclude Include="cToolBar.h">
       <Filter>UI\cToolbar</Filter>
     </ClInclude>
+    <ClInclude Include="cFreeCam.h">
+      <Filter>BasicThings\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -231,16 +237,16 @@
       <Filter>MANAGER</Filter>
     </ClCompile>
     <ClCompile Include="cCube.cpp">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClCompile>
     <ClCompile Include="cCamera.cpp">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClCompile>
     <ClCompile Include="cGrid.cpp">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClCompile>
     <ClCompile Include="cPyramid.cpp">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClCompile>
     <ClCompile Include="cDeviceManager.cpp">
       <Filter>MANAGER</Filter>
@@ -270,7 +276,7 @@
       <Filter>MANAGER</Filter>
     </ClCompile>
     <ClCompile Include="cSphereMesh.cpp">
-      <Filter>FileLoader\BasicThings</Filter>
+      <Filter>BasicThings</Filter>
     </ClCompile>
     <ClCompile Include="cRawLoader.cpp">
       <Filter>FileLoader\RawLoader</Filter>
@@ -328,6 +334,9 @@
     </ClCompile>
     <ClCompile Include="cToolBar.cpp">
       <Filter>UI\cToolbar</Filter>
+    </ClCompile>
+    <ClCompile Include="cFreeCam.cpp">
+      <Filter>BasicThings\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

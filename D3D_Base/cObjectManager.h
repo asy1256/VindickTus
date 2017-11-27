@@ -5,6 +5,7 @@
 struct ST_OBJ_DATA
 {
 	LPD3DXMESH mesh;
+	LPD3DXMESH box;
 	D3DXVECTOR3 localPos;
 	D3DXVECTOR3 rotAxis;
 	D3DXVECTOR3 scalsize;
@@ -13,6 +14,7 @@ struct ST_OBJ_DATA
 
 	ST_OBJ_DATA()
 		: mesh(NULL)
+		, box(NULL)
 		, localPos(0, 0, 0)
 		, rotAxis(0, 0, 0)
 		, scalsize(1, 1, 1)
@@ -32,6 +34,9 @@ private:
 	std::map <std::string, LPD3DXMESH> m_mapObject;
 	std::vector<ST_OBJ_DATA> m_vecObject;
 	std::vector<int> m_vecObjType;
+
+	LPD3DXMESH m_pBox;
+	LPD3DXMESH m_pSphere;
 
 	int m_nNumObj;
 	

@@ -3,11 +3,13 @@
 #include "cCustomMap.h"
 #include "cToolBar.h"
 #include "cGrid.h"
+#include "cFreeCam.h"
 
 cMapTest::cMapTest()
 	: m_pMap(NULL)
 	, m_pTool(NULL)
 	, m_pGrid(NULL)
+	, m_pCam(NULL)
 	, m_isToolOpen(false)
 	, m_nNowSelect(10)
 {
@@ -20,14 +22,17 @@ cMapTest::~cMapTest()
 
 HRESULT cMapTest::Setup()
 {
-	m_pCamera = new cCamera;
-	m_pCamera->Setup();
+	//m_pCamera = new cCamera;
+	//m_pCamera->Setup();
+
+	m_pCam = new cFreeCam;
+	m_pCam->Setup();
 
 	m_pMap = new cCustomMap;
-	m_pMap->Setup(129, 129, 2.0f);
+	m_pMap->Setup(129, 129, 1.5f);
 
 	m_pGrid = new cGrid;
-	m_pGrid->Setup();
+	m_pGrid->Setup(30, 1.0f);
 
 	m_pTool = new cToolBar;
 	m_pTool->Setup();
@@ -42,11 +47,11 @@ void cMapTest::Update()
 	if (m_pCamera)
 		m_pCamera->Update();
 
+	if (m_pCam)
+		m_pCam->Update();
+
 	if (KEYMANAGER->isOnceKeyDown('M')) { m_isToolOpen = (m_isToolOpen) ? false : true; }
 	
-	if (KEYMANAGER->isOnceKeyDown('S')) { g_pObjectManager->SaveObject(); };
-	if (KEYMANAGER->isOnceKeyDown('L')) { g_pObjectManager->LoadObject(); };
-
 	if (m_isToolOpen)
 	{
 		if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
@@ -56,18 +61,34 @@ void cMapTest::Update()
 	}
 	else
 	{
-		if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
+		if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
 		{
-			Ray ray;
-			ray.Origin = D3DXVECTOR3(0, 0, 0);
-			D3DXVECTOR3 pos(0, 0, 0);
-			POINT pt = g_ptMouse;
-			pt.x += 128;
-			pt.y += 50;
-			GetRay(ray, pt.x, pt.y);
-			m_pMap->Picking(ray, pos);
 
-			MakeObject(pos);
+		}
+		if (KEYMANAGER->isStayKeyDown(VK_CONTROL))
+		{
+			if (KEYMANAGER->isStayKeyDown(VK_RBUTTON))
+			{
+				if (KEYMANAGER->isStayKeyDown('W')) { m_pCam->MoveLocalZ(0.4f); }
+				if (KEYMANAGER->isStayKeyDown('A')) { m_pCam->MoveLocalX(-0.4f); }
+				if (KEYMANAGER->isStayKeyDown('S')) { m_pCam->MoveLocalZ(-0.4f); }
+				if (KEYMANAGER->isStayKeyDown('D')) { m_pCam->MoveLocalX(0.4f); }
+			}
+		}
+		else
+		{
+			if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
+			{
+				Ray ray;
+				ray.Origin = D3DXVECTOR3(0, 0, 0);
+				D3DXVECTOR3 pos(0, 0, 0);
+				POINT pt = g_ptMouse;
+				pt.x += 128;
+				pt.y += 50;
+				GetRay(ray, pt.x, pt.y);
+				m_pMap->Picking(ray, pos);
+				MakeObject(pos);
+			}
 		}
 	}
 }
@@ -91,6 +112,7 @@ void cMapTest::Destroy()
 	SAFE_DELETE(m_pMap);
 	SAFE_DELETE(m_pTool);
 	SAFE_DELETE(m_pGrid);
+	SAFE_DELETE(m_pCam);
 }
 
 void cMapTest::MakeObject(D3DXVECTOR3& pos)
@@ -136,6 +158,9 @@ void cMapTest::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	if (m_pCamera)
 		m_pCamera->WndProc(hWnd, message, wParam, lParam);
+
+	if (m_pCam)
+		m_pCam->WndProc(hWnd, message, wParam, lParam);
 }
 
 void cMapTest::GetRay(Ray& ray, int x, int y)

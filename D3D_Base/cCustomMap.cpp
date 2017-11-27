@@ -30,13 +30,16 @@ void cCustomMap::Setup(int nWidth, int nHeight, float fTileSize)
 	vecIndex.resize((m_nRow - 1) * (m_nRow - 1) * 2 * 3);
 
 	//정점 집어넣기
+	D3DXMATRIXA16 matT; //맵의 정점을 중앙을 기준으로 옮기기 위한 행렬
+	D3DXMatrixTranslation(&matT, -(m_nRow / 2 + 1) * fTileSize, 0, -(m_nRow / 2 + 1) * fTileSize);
 	for (int i = 0; i < nNumVertex; i++)
 	{
 		ST_PNT_VERTEX v;
 		v.p = D3DXVECTOR3((i % m_nRow) * g_fTileSize, 0.0f, (i / m_nRow) * g_fTileSize);
+		D3DXVec3TransformCoord(&v.p, &v.p, &matT); //가로 세로 사이즈만큼 -위치로 이동시키자
 		v.n = D3DXVECTOR3(0, 1, 0);
-		v.t = D3DXVECTOR2((i % m_nRow) * 8 / (float)m_nRow,
-			(i / m_nRow) * 8 / (float)m_nRow);
+		v.t = D3DXVECTOR2((i % m_nRow) * 10 / (float)m_nRow,
+			(i / m_nRow) * 10 / (float)m_nRow);
 		vecVertex[i] = v;
 		m_vecVertex[i] = v.p;
 	}

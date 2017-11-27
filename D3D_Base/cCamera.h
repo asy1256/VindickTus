@@ -1,7 +1,7 @@
 #pragma once
 class cCamera
 {
-private:
+protected:
 	D3DXVECTOR3 m_vEye;
 	D3DXVECTOR3	m_vLookAt;
 	D3DXVECTOR3	m_vUp;
@@ -13,12 +13,12 @@ private:
 
 public:
 	cCamera();
-	~cCamera();
+	virtual ~cCamera();
 
-	void Setup();
-	void Update();
-	void Update(D3DXVECTOR3 look);
+	virtual void Setup();
+	virtual void Update();
+	virtual void Update(D3DXVECTOR3 look);
 
-	void WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+	virtual void WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 };
 
