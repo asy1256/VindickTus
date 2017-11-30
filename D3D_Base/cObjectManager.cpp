@@ -4,6 +4,7 @@
 
 
 cObjectManager::cObjectManager()
+	: m_pBox(NULL)
 {
 }
 
@@ -20,13 +21,24 @@ void cObjectManager::CreateObject(D3DXVECTOR3 pos, char* szFolder, char* szObj, 
 
 	if (m_mapObject.find(fullpath) == m_mapObject.end())
 	{
-		loader.CreatMeshFromFile(m_mapObject[fullpath], fullpath);
+		loader.CreatMeshFromFile(m_mapObject[fullpath], m_mapMinMax[fullpath],fullpath);
 	}
 	ST_OBJ_DATA obj;
 	obj.localPos = pos;
 	obj.mesh = m_mapObject[fullpath];
+	obj.minmax = &m_mapMinMax[fullpath];
+	obj.localPos.y = pos.y + -obj.minmax->vMin.y;
 	fullpath = std::string(szFolder) + std::string("/") + std::string(szTex);
 	obj.texture = g_pTextureManager->GetTexture(fullpath);
+	
+	if (!m_pBox)
+	{
+		D3DXCreateBox(g_pD3DDevice, 2.0f, 2.0f, 2.0f, &m_pBox, 0);
+	}
+	obj.box = m_pBox;
+	obj.bbScalSize.x = obj.minmax->vMax.x / 1.0f;
+	obj.bbScalSize.y = obj.minmax->vMax.y / 1.0f;
+	obj.bbScalSize.z = obj.minmax->vMax.z / 1.0f;
 
 	m_vecObject.push_back(obj);
 	m_vecObjType.push_back(type);
@@ -106,11 +118,17 @@ void cObjectManager::LoadObjectData(ST_OBJ_DATA& obj, int objNum)
 
 	if (m_mapObject.find(objName) == m_mapObject.end())
 	{
-		loader.CreatMeshFromFile(m_mapObject[objName], objName);
+		loader.CreatMeshFromFile(m_mapObject[objName], m_mapMinMax[objName], objName);
 	}
 
 	obj.mesh = m_mapObject[objName];
+	obj.minmax = &m_mapMinMax[objName];
 	obj.texture = g_pTextureManager->GetTexture(texName);
+	if (!m_pBox)
+	{
+		D3DXCreateBox(g_pD3DDevice, 2.0f, 2.0f, 2.0f, &m_pBox, 0);
+	}
+	obj.box = m_pBox;
 }
 
 void cObjectManager::Render()
@@ -126,13 +144,24 @@ void cObjectManager::Render()
 		D3DXMatrixTranslation(&matT, m_vecObject[i].localPos.x, m_vecObject[i].localPos.y, m_vecObject[i].localPos.z);
 		world = matS * matR * matT;
 
+		g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 		g_pD3DDevice->SetTransform(D3DTS_WORLD, &world);
 		g_pD3DDevice->SetTexture(0, m_vecObject[i].texture);
 		g_pD3DDevice->SetMaterial(&m_vecObject[i].mtl);
-		
 		m_vecObject[i].mesh->DrawSubset(0);
+		
+
+		D3DXMatrixScaling(&matS, m_vecObject[i].bbScalSize.x, m_vecObject[i].bbScalSize.y, m_vecObject[i].bbScalSize.z);
+		world = matS * matR * matT;
+
+		g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME);
+		g_pD3DDevice->SetTransform(D3DTS_WORLD, &world);
+		g_pD3DDevice->SetTexture(0, NULL);
+		g_pD3DDevice->SetMaterial(&m_vecObject[i].mtl);
+		m_vecObject[i].box->DrawSubset(0);
 	}
 
+	g_pD3DDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 }
 
 void cObjectManager::SaveObject()

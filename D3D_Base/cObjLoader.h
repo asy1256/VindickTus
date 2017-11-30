@@ -17,7 +17,5 @@ public:
 
 	void LoadMtlLib( IN char* szFolder, IN char* szMtlFile );
 
-	void CreatMeshFromFile(OUT LPD3DXMESH& mesh, std::string fullpath);
-
+	void CreatMeshFromFile(OUT LPD3DXMESH& mesh, OUT ST_BB_MINMAX& minmax, std::string fullpath);
 };
-

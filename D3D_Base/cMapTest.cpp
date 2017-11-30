@@ -12,6 +12,7 @@ cMapTest::cMapTest()
 	, m_pCam(NULL)
 	, m_isToolOpen(false)
 	, m_nNowSelect(10)
+	, m_nTargetObj(0)
 {
 }
 
@@ -61,10 +62,6 @@ void cMapTest::Update()
 	}
 	else
 	{
-		if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
-		{
-
-		}
 		if (KEYMANAGER->isStayKeyDown(VK_CONTROL))
 		{
 			if (KEYMANAGER->isStayKeyDown(VK_RBUTTON))
@@ -77,6 +74,32 @@ void cMapTest::Update()
 		}
 		else
 		{
+			if (KEYMANAGER->isOnceKeyDown(VK_LBUTTON))
+			{
+				Ray ray;
+				ray.Origin = D3DXVECTOR3(0, 0, 0);
+				D3DXVECTOR3 pos(0, 0, 0);
+				POINT pt = g_ptMouse;
+				pt.x += 128;
+				pt.y += 50;
+				GetRay(ray, pt.x, pt.y);
+
+				D3DXVECTOR3 vMax(0, 0, 0);
+				D3DXVECTOR3 vMin(0, 0, 0);
+				D3DXMATRIXA16 matR;
+
+				for (int i = 0; i < g_pObjectManager->GetObjectData().size(); ++i)
+				{
+					D3DXMatrixRotationY(&matR, g_pObjectManager->GetObjectData()[i].rotAxis.y);
+					vMax = g_pObjectManager->GetObjectData()[i].localPos + g_pObjectManager->GetObjectData()[i].minmax->vMax;
+					vMin = g_pObjectManager->GetObjectData()[i].localPos + g_pObjectManager->GetObjectData()[i].minmax->vMin;
+					if (IntersectBox(&ray, vMax, vMin))
+					{
+						m_nTargetObj = i;
+						break;
+					}
+				}
+			}
 			if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
 			{
 				Ray ray;
@@ -91,6 +114,43 @@ void cMapTest::Update()
 			}
 		}
 	}
+
+	if (!g_pObjectManager->GetObjectData().empty())
+	{
+		if (KEYMANAGER->isStayKeyDown('J')) //-x 방향으로 이동
+		{
+			g_pObjectManager->GetObjectData()[m_nTargetObj].localPos.x -= 0.1f;
+		}
+		if (KEYMANAGER->isStayKeyDown('L')) //+x 방향으로 이동
+		{
+			g_pObjectManager->GetObjectData()[m_nTargetObj].localPos.x += 0.1f;
+		}
+		if (KEYMANAGER->isStayKeyDown('I')) //+z 방향으로 이동
+		{
+			g_pObjectManager->GetObjectData()[m_nTargetObj].localPos.z += 0.1f;
+		}
+		if (KEYMANAGER->isStayKeyDown('K')) //-z 방향으로 이동
+		{
+			g_pObjectManager->GetObjectData()[m_nTargetObj].localPos.z -= 0.1f;
+		}
+		if (KEYMANAGER->isStayKeyDown('Y')) //+y 방향으로 이동
+		{
+			g_pObjectManager->GetObjectData()[m_nTargetObj].localPos.y += 0.1f;
+		}
+		if (KEYMANAGER->isStayKeyDown('H')) //-y 방향으로 이동
+		{
+			g_pObjectManager->GetObjectData()[m_nTargetObj].localPos.y -= 0.1f;
+		}
+		if (KEYMANAGER->isStayKeyDown('U')) //왼쪽으로 돌려
+		{
+			g_pObjectManager->GetObjectData()[m_nTargetObj].rotAxis.y -= 0.1f;
+		}
+		if (KEYMANAGER->isStayKeyDown('O')) //오른쪽으로 돌려
+		{
+			g_pObjectManager->GetObjectData()[m_nTargetObj].rotAxis.y += 0.1f;
+		}
+	}
+
 }
 
 void cMapTest::Render()
@@ -113,6 +173,66 @@ void cMapTest::Destroy()
 	SAFE_DELETE(m_pTool);
 	SAFE_DELETE(m_pGrid);
 	SAFE_DELETE(m_pCam);
+}
+
+bool cMapTest::IntersectBox(Ray* ray, D3DXVECTOR3 & max, D3DXVECTOR3 & min)
+{
+	D3DXVECTOR3 v0, v1, v2;
+
+	v0 = D3DXVECTOR3(min.x, max.y, max.z);
+	v1 = D3DXVECTOR3(max.x, max.y, max.z);
+	v2 = D3DXVECTOR3(min.x, max.y, min.z);
+
+	if (D3DXIntersectTri(&v0, &v1, &v2, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v0.x = max.x;
+	v0.z = min.z;
+	if (D3DXIntersectTri(&v0, &v2, &v1, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v2.x = max.x;
+	v2.y = min.y;
+	if (D3DXIntersectTri(&v0, &v1, &v2, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v0.y = min.y;
+	v0.z = max.z;
+	if (D3DXIntersectTri(&v0, &v2, &v1, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v2.x = min.x;
+	v2.z = max.z;
+	if (D3DXIntersectTri(&v0, &v1, &v2, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v0.x = min.x;
+	v0.y = max.y;
+	if (D3DXIntersectTri(&v0, &v2, &v1, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v1.x = min.x;
+	v1.z = min.z;
+	if (D3DXIntersectTri(&v0, &v1, &v2, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v0.y = min.y;
+	v0.z = min.z;
+	if (D3DXIntersectTri(&v0, &v2, &v1, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v2.x = max.x;
+	v2.z = min.z;
+	if (D3DXIntersectTri(&v0, &v1, &v2, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v0.x = max.x;
+	v0.y = max.y;
+	if (D3DXIntersectTri(&v0, &v2, &v1, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	// 6면체 (밑면)
+	v0.y = min.y;
+	v0.z = max.z;
+	v1.z = max.z;
+	v1.y = min.y;
+	if (D3DXIntersectTri(&v0, &v2, &v1, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	v0.x = min.x;
+	v0.z = min.z;
+	if (D3DXIntersectTri(&v0, &v1, &v2, &ray->Origin, &ray->Direction, NULL, NULL, NULL)) return true;
+
+	return false;
 }
 
 void cMapTest::MakeObject(D3DXVECTOR3& pos)

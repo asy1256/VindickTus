@@ -185,7 +185,7 @@ void cObjLoader::LoadMtlLib( IN char * szFolder, IN char * szMtlFile )
 	fclose( fp );
 }
 
-void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, std::string fullpath)
+void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, OUT ST_BB_MINMAX& minmax, std::string fullpath)
 {
 	std::vector<D3DXVECTOR3> vecV;
 	std::vector<D3DXVECTOR2> vecVT;
@@ -268,18 +268,32 @@ void cObjLoader::CreatMeshFromFile(OUT LPD3DXMESH& mesh, std::string fullpath)
 	ST_PNT_VERTEX* tV;
 	WORD* tW;
 	DWORD* tDW;
-	D3DXMATRIXA16 matS, matR, matWorld;
+	D3DXMATRIXA16 matS, matR, matT, matWorld;
 	D3DXMatrixScaling(&matS, 0.01f, 0.01f, 0.01f);
 	D3DXMatrixRotationX(&matR, -D3DX_PI / 2);
 	matWorld = matS;
 
 	mesh->LockVertexBuffer(0, (void**)&tV);
 	
+	D3DXVECTOR3 vMin(0, 0, 0);
+	D3DXVECTOR3 vMax(0, 0, 0);
+
 	for (int i = 0; i < vecVertex.size(); ++i)
 	{
 		tV[i] = vecVertex[i];
 		D3DXVec3TransformCoord(&tV[i].p, &tV[i].p, &matWorld);
+
+		if (tV[i].p.x < vMin.x) { vMin.x = tV[i].p.x; }
+		if (tV[i].p.y < vMin.y) { vMin.y = tV[i].p.y; }
+		if (tV[i].p.z < vMin.z) { vMin.z = tV[i].p.z; }
+
+		if (tV[i].p.x > vMax.x) { vMax.x = tV[i].p.x; }
+		if (tV[i].p.y > vMax.y) { vMax.y = tV[i].p.y; }
+		if (tV[i].p.z > vMax.z) { vMax.z = tV[i].p.z; }
 	}
+
+	minmax.vMax = vMax;
+	minmax.vMin = vMin;
 	
 	mesh->UnlockVertexBuffer();
 
